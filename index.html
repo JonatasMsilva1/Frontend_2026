@@ -1,0 +1,267 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title> Minha coleção de carros </title>
+
+    <style>
+        nav {
+            background-color: black;
+            border-radius: 20px;
+            padding: 0;
+            margin: 0;
+        }
+
+        nav ul {
+            color: white;
+            list-style: none;
+            display: flex;
+            font-size: 25px;
+            font-family: Arial, Helvetica, sans-serif;
+            justify-content: center;
+            padding: 50px;
+            gap: 20px;
+        }
+
+        nav a {
+            text-decoration: none;
+            color: white;
+        }
+
+        body {
+            background-color: grey;
+        }
+
+        .galeria {
+            display: flex;
+            gap: 40px;
+            justify-content: center;
+            margin-top: 50px;
+
+        }
+
+        .carro {
+            text-align: justify;
+            font-family: Arial, Helvetica, sans-serif;
+            font-size: 20px;
+            padding: 20px;
+        }
+
+        .carro img {
+            width: 500px;
+            height: 300px;
+            border-radius: 10px;
+        }
+
+
+        h1 {
+            font-size: 30px;
+            text-align: center;
+            font-family: Arial, Helvetica, sans-serif;
+        }
+
+        h2 {
+            font-size: 25px;
+            text-align: center;
+        }
+
+        h3 {
+            font-size: 40px;
+            text-align: center;
+            font-family: Arial, Helvetica, sans-serif;
+        }
+
+        .sobre_mim {
+            padding: 0px;
+            margin: 100px;
+            text-align: center;
+            font-size: 25px;
+            font-family: Arial, Helvetica, sans-serif;
+            color: black;
+        }
+
+        .sobre_mim h1 {
+            font-size: 40px;
+            font-family: Arial, Helvetica, sans-serif;
+
+        }
+
+        .ficha_tecnica {
+            text-align: center;
+            font-family: Arial, Helvetica, sans-serif;
+            padding: 15px;
+            display: flex;
+            gap: 300px;
+            justify-content: center;
+            margin: 0px;
+            border: 0px;
+        
+        }
+
+        footer {
+            color: white;
+            background-color: black;
+            padding: 20px;
+            border-radius: 20px;
+            font-family: Arial, Helvetica, sans-serif;
+            font-size: 20px;
+            margin: 0;
+        }
+    </style>
+</head>
+
+<body>
+    <nav>
+        <ul>
+            <li><a href="#sobre">Inicio </a></li>
+            <li><a href="#colecao"> Coleção </a></li>
+            <li> <a href="#ficha_tecnica">Ficha Técnica</a></li>
+            <li><a href="#contato">Contato</a></li>
+
+        </ul>
+    </nav>
+
+    <section id="sobre" class="sobre_mim">
+        <h1>Sobre mim</h1>
+        <p>Sou apaixonado por automóveis clássicos e pela história que cada modelo representa.
+            Este site apresenta minha coleção, reunindo veículos que marcaram épocas e simbolizam a evolução da
+            engenharia automotiva.
+            Mais do que colecionar, dedico-me à preservação da memória e do legado automobilístico.</p>
+    </section>
+
+    <h3>Seja Bem Vindo!</h3>
+
+    <div id="colecao" class="galeria">
+
+        <div class="carro">
+            <img src="1974-Volkswagen-Fusca-1500-azul-a-venda-for-sale-the-garage-1-of-31.jpg"
+                alt="Foto de um fusca clássico">
+            <h2>Fusca</h2>
+            <ul>
+                <li>Motor: 1.5 Boxer</li>
+                <li>Potência: 52 cv</li>
+                <li>Cor: Azul ciano</li>
+                <li>Velocidade: 125 km/h</li>
+            </ul>
+        </div>
+
+        <div class="carro">
+            <img src="566b0bc782bee174ca02bb4bqr-676-classicos-parati-01-tif.webp" alt="Foto de uma parati clásica">
+            <h2>Parati</h2>
+            <ul>
+                <li>Motor: 1.8 AP</li>
+                <li>Potência: 99 cv</li>
+                <li>Cor: Azul prateado</li>
+                <li>Velocidade:170 km/h </li>
+            </ul>
+        </div>
+
+        <div class="carro">
+            <img src="photo_81647.webp" alt="Foto de um volkswagen clássico">
+            <h2>Gol GTI</h2>
+            <ul>
+                <li>Motor: 1.6 AP</li>
+                <li>Potência: 92 cv</li>
+                <li>Cor: Vermelho</li>
+                <li>Velocidade: 170 km/h</li>
+            </ul>
+        </div>
+    </div>
+
+
+
+    <h1>Fichas Técnicas Detalhadas</h1>
+    <div id="ficha_tecnica" class="ficha_tecnica">
+        <div>
+
+            <h2>Fusca 1500 1974</h2>
+            <table border="1">
+                <tr>
+                    <th>Especificação</th>
+                    <th>Detalhe</th>
+                </tr>
+                <tr>
+                    <td>Motor</td>
+                    <td>1.5 Boxer 4 cilindros</td>
+                </tr>
+                <tr>
+                    <td>Potência</td>
+                    <td>52 cv</td>
+                </tr>
+                <tr>
+                    <td>Torque</td>
+                    <td>10,3 kgfm</td>
+                </tr>
+                <tr>
+                    <td>Transmissão</td>
+                    <td>Manual 4 marchas</td>
+                </tr>
+            </table>
+        </div>
+
+
+        <div class="ficha_parati">
+            <h2>Parati 1.8 AP</h2>
+            <table border="1">
+                <tr>
+                    <th>Especificação</th>
+                    <th>Detalhe</th>
+                </tr>
+                <tr>
+                    <td>Motor</td>
+                    <td>1.8 AP 4 cilindros</td>
+                </tr>
+                <tr>
+                    <td>Potência</td>
+                    <td>99 cv</td>
+                </tr>
+                <tr>
+                    <td>Torque</td>
+                    <td>15,3 kgfm</td>
+                </tr>
+                <tr>
+                    <td>Transmissão</td>
+                    <td>Manual 5 marchas</td>
+                </tr>
+            </table>
+        </div>
+
+
+        <div>
+            <h2>Gol GTI 2.0</h2>
+            <table border="1">
+                <tr>
+                    <th>Especificação</th>
+                    <th>Detalhe</th>
+                </tr>
+                <tr>
+                    <td>Motor</td>
+                    <td>2.0 8v 4 cilindros</td>
+                </tr>
+                <tr>
+                    <td>Potência</td>
+                    <td>120 cv</td>
+                </tr>
+                <tr>
+                    <td>Torque</td>
+                    <td>17,5 kgfm</td>
+                </tr>
+                <tr>
+                    <td>Transmissão</td>
+                    <td>Manual 5 marchas</td>
+                </tr>
+            </table>
+        </div>
+
+    </div>
+
+    <footer id="contato">
+        <p>Email: colecionador1@gmail.com</p>
+        <p>Telefone: (55) 44 98812-0192</p>
+    </footer>
+
+</body>
+
+</html>
