@@ -7,7 +7,58 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Material De Estudo - Rede de computadores</title>
 </head>
+
+<style>
+	*{
+		font-family: arial, sans-serif;
+		border: 0px;
+		padding: 0px;
+		margin: 0px;
+	}
+
+
+	.cabecalho {
+		background-color:black;
+    		color: aqua;
+		text-align:center;
+		border-radius:15px;
+		margin: 10px;
+		padding: 30px;
+	}
+
+	.cabecalho a {
+		text-decoration: none;
+		color: white;
+	}
+
+	.corpo {
+		margin: 10px;
+		padding: 30px;
+		text-align:justify;
+	}
+
+</style>
+
 <body>
-   
+	<div class="cabecalho">
+		<section class="cabecalho_titulo">
+   			<h1>Material de Estudos - Redes de Computadores</h1>
+		</section>
+		<nav>
+			<a href="#rede_de_computadores" target="_self">Redes de Computadores</a>
+			<a href="#topologias" target="_self">Topologias</a>
+			<a href="#Vpn" target="_self">Redes Privadas</a>
+		</nav>
+	</div>
+
+
+	<div class="corpo">
+		<h2> Oque é Rede de Computadores?</h2>
+		<p>Uma rede de computadores é um sistema de dispositivos de computação interconectados variando de ambientes tradicionais a baseados em nuvem que se comunicam e compartilham recursos entre si.
+A rede de computadores envolve conectar dois ou mais dispositivos de computação (por exemplo, desktops, notebooks, dispositivos móveis, roteadores, aplicações) para permitir a transmissão e o intercâmbio de informações e recursos.
+Dispositivos em rede dependem de protocolos de comunicação regras que descrevem como transmitir ou trocar dados em uma rede permitindo que compartilhem informações por meio de conexões físicas ou sem fio.
+As redes de computadores formam a espinha dorsal de praticamente toda experiência digital — desde a comunicação pessoal e entretenimento até operações empresariais nativas da nuvem e infraestrutura global. Projetadas para escalabilidade, velocidade e segurança de TI, as redes atuais suportam fluxos dinâmicos de dados tanto em sistemas locais quanto em ambientes de nuvem virtualizados.</p>
+		
+	</div>
 </body>
 </html>
