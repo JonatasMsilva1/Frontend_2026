@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Arquivo da Computação</title>
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet">
+
+    <style>
+        body {
+            background: linear-gradient(135deg, #0f172a, #1e293b);
+            color: #e2e8f0;
+            font-family: 'Segoe UI', sans-serif;
+        }
+
+        header {
+            background: linear-gradient(90deg, #6366f1, #22c55e);
+            color: white;
+        }
+
+        .section-box {
+            background: #1e293b;
+            border-radius: 15px;
+            padding: 40px;
+            margin-bottom: 40px;
+            box-shadow: 0 0 20px rgba(0,0,0,0.4);
+            transition: 0.3s;
+        }
+
+        .section-box:hover {
+            transform: translateY(-5px);
+        }
+
+        h2 {
+            color: #38bdf8;
+        }
+
+        .navbar {
+            background: rgba(15, 23, 42, 0.9) !important;
+            backdrop-filter: blur(10px);
+        }
+
+        .navbar-brand {
+            color: #22c55e !important;
+            font-weight: bold;
+        }
+
+        .nav-link {
+            color: #cbd5f5 !important;
+        }
+
+        .nav-link:hover {
+            color: #38bdf8 !important;
+        }
+
+        .btn-primary {
+            background: linear-gradient(90deg, #6366f1, #22c55e);
+            border: none;
+        }
+
+        table {
+            background: #0f172a;
+        }
+
+        footer {
+            background: #020617;
+            color: #94a3b8;
+        }
+    </style>
+</head>
+
+<body>
+
+<header class="text-center py-5">
+    <h1 class="display-5">Arquivo da Ciência da Computação</h1>
+    <p class="lead">Curiosidades, histórias e fatos surpreendentes 🚀</p>
+</header>
+
+<nav class="navbar navbar-expand-lg sticky-top">
+    <div class="container">
+        <a class="navbar-brand" href="#">Computação</a>
+
+        <button class="navbar-toggler bg-light" data-bs-toggle="collapse" data-bs-target="#menu"></button>
+
+        <div class="collapse navbar-collapse justify-content-end" id="menu">
+            <ul class="navbar-nav">
+                <li class="nav-item"><a class="nav-link" href="#pioneiros">Pioneiros</a></li>
+                <li class="nav-item"><a class="nav-link" href="#bugs">Bugs</a></li>
+                <li class="nav-item"><a class="nav-link" href="#internet">Internet</a></li>
+                <li class="nav-item"><a class="nav-link" href="#linguagens">Linguagens</a></li>
+                <li class="nav-item"><a class="nav-link" href="#formulario">Enviar</a></li>
+            </ul>
+        </div>
+    </div>
+</nav>
+
+<main class="container py-5">
+
+    <section id="pioneiros" class="section-box">
+        <h2>Pioneiros</h2>
+        <p><strong>Ada Lovelace:</strong> Primeira programadora da história.</p>
+        <p><strong>Alan Turing:</strong> Criador da base da computação moderna.</p>
+    </section>
+
+    <section id="bugs" class="section-box">
+        <h2>Bugs históricos</h2>
+        <p>🐛 Primeiro bug: uma mariposa em 1947.</p>
+        <pre class="bg-dark p-3 rounded text-success">I'M THE CREEPER : CATCH ME IF YOU CAN</pre>
+    </section>
+
+    <section id="internet" class="section-box">
+        <h2>Internet</h2>
+        <ul>
+            <li>Primeiro site: 1991</li>
+            <li>ARPANET: primeira rede</li>
+            <li>Emojis: :-) ;-) :-D</li>
+        </ul>
+    </section>
+
+    <section id="linguagens" class="section-box">
+        <h2>Linguagens</h2>
+
+        <table class="table table-dark table-striped rounded">
+            <thead>
+                <tr>
+                    <th>Linguagem</th>
+                    <th>Ano</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr><td>COBOL</td><td>1959</td></tr>
+                <tr><td>C</td><td>1972</td></tr>
+                <tr><td>Python</td><td>1991</td></tr>
+            </tbody>
+        </table>
+    </section>
+
+    <section id="formulario" class="section-box">
+        <h2>Envie sua curiosidade</h2>
+
+        <form>
+            <input class="form-control mb-3" placeholder="Nome">
+            <input class="form-control mb-3" type="email" placeholder="Email">
+
+            <select class="form-select mb-3">
+                <option>Pioneiros</option>
+                <option>Bugs</option>
+                <option>Internet</option>
+            </select>
+
+            <textarea class="form-control mb-3" placeholder="Sua curiosidade"></textarea>
+
+            <button class="btn btn-primary w-100">Enviar 🚀</button>
+        </form>
+    </section>
+
+</main>
+
+<footer class="text-center p-4">
+    <p>© 2026 Arquivo da Computação</p>
+</footer>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"></script>
+
+</body>
+</html>
