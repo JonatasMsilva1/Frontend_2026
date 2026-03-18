@@ -1,89 +1,338 @@
+
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
 <meta charset="UTF-8">
-<title>Meus Sites</title>
-
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Projetos Frontend 2026</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
 <style>
-body {
-    font-family: Arial, sans-serif;
-    background: linear-gradient(135deg, #4facfe, #00f2fe);
-    margin: 0;
-    padding: 0;
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --bg: #0b0d14;
+    --card: rgba(255,255,255,0.04);
+    --border: rgba(255,255,255,0.08);
+    --text: #f0eee8;
+    --sub: #7a7f96;
+    --accent: #c8a96e;
+    --accent2: #6e8fc8;
+    --glow: rgba(200,169,110,0.15);
+  }
+
+  body {
+    font-family: 'DM Sans', sans-serif;
+    background: var(--bg);
+    color: var(--text);
+    min-height: 100vh;
     display: flex;
-    justify-content: center;
     align-items: center;
-    height: 100vh;
-}
+    justify-content: center;
+    overflow: hidden;
+    transition: background 0.5s, color 0.5s;
+  }
 
-/* Container central */
-.container {
-    background-color: white;
-    padding: 40px;
-    border-radius: 15px;
-    box-shadow: 0 10px 25px rgba(0,0,0,0.2);
-    text-align: center;
-    width: 350px;
-}
+  /* ── Light mode ── */
+  body.light {
+    --bg: #f4f1eb;
+    --card: rgba(0,0,0,0.03);
+    --border: rgba(0,0,0,0.08);
+    --text: #1a1714;
+    --sub: #7a7068;
+    --glow: rgba(200,169,110,0.2);
+  }
 
-/* Título */
-h1 {
+  /* ── Background mesh ── */
+  .bg-mesh {
+    position: fixed; inset: 0; z-index: 0; pointer-events: none;
+    overflow: hidden;
+  }
+  .blob {
+    position: absolute;
+    border-radius: 50%;
+    filter: blur(80px);
+    opacity: 0.18;
+    animation: drift 12s ease-in-out infinite alternate;
+  }
+  .blob-1 { width: 500px; height: 500px; background: var(--accent); top: -120px; left: -150px; animation-delay: 0s; }
+  .blob-2 { width: 400px; height: 400px; background: var(--accent2); bottom: -100px; right: -100px; animation-delay: -4s; }
+  .blob-3 { width: 300px; height: 300px; background: #b06ec8; top: 50%; left: 60%; animation-delay: -8s; }
+
+  @keyframes drift {
+    from { transform: translate(0,0) scale(1); }
+    to   { transform: translate(30px, 20px) scale(1.08); }
+  }
+
+  /* ── Noise overlay ── */
+  .noise {
+    position: fixed; inset: 0; z-index: 1; pointer-events: none;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+    opacity: 0.035;
+  }
+
+  /* ── Card ── */
+  .card {
+    position: relative; z-index: 10;
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 24px;
+    padding: 44px 40px;
+    width: 420px;
+    backdrop-filter: blur(24px);
+    box-shadow: 0 0 0 1px var(--border), 0 24px 60px rgba(0,0,0,0.3), 0 0 80px var(--glow);
+    animation: rise 0.7s cubic-bezier(0.22,1,0.36,1) both;
+  }
+  @keyframes rise {
+    from { opacity: 0; transform: translateY(28px) scale(0.97); }
+    to   { opacity: 1; transform: none; }
+  }
+
+  /* ── Header ── */
+  .header { margin-bottom: 32px; }
+
+  .eyebrow {
+    font-size: 11px;
+    font-weight: 500;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--accent);
     margin-bottom: 10px;
-    color: #333;
-}
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+  .eyebrow::before {
+    content: '';
+    display: inline-block;
+    width: 20px; height: 1px;
+    background: var(--accent);
+    flex-shrink: 0;
+  }
 
-/* Texto */
-p {
-    color: #666;
-    margin-bottom: 20px;
-}
+  h1 {
+    font-family: 'DM Serif Display', serif;
+    font-size: 32px;
+    line-height: 1.15;
+    letter-spacing: -0.01em;
+    color: var(--text);
+  }
+  h1 em {
+    font-style: italic;
+    color: var(--accent);
+  }
 
-/* Lista */
-ul {
-    list-style: none;
-    padding: 0;
-}
+  .subtitle {
+    font-size: 13px;
+    color: var(--sub);
+    margin-top: 8px;
+    line-height: 1.6;
+  }
 
-/* Itens */
-li {
-    margin: 10px 0;
-}
+  /* ── Divider ── */
+  .divider {
+    height: 1px;
+    background: var(--border);
+    margin: 24px 0;
+  }
 
-/* Links como botões */
-a {
-    display: block;
+  /* ── Links ── */
+  ul { list-style: none; display: flex; flex-direction: column; gap: 9px; }
+
+  li { animation: slide-in 0.5s cubic-bezier(0.22,1,0.36,1) both; }
+  li:nth-child(1) { animation-delay: 0.15s; }
+  li:nth-child(2) { animation-delay: 0.22s; }
+  li:nth-child(3) { animation-delay: 0.29s; }
+  li:nth-child(4) { animation-delay: 0.36s; }
+  li:nth-child(5) { animation-delay: 0.43s; }
+
+  @keyframes slide-in {
+    from { opacity: 0; transform: translateX(-12px); }
+    to   { opacity: 1; transform: none; }
+  }
+
+  a {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
     text-decoration: none;
-    background-color: #4facfe;
-    color: white;
-    padding: 12px;
+    padding: 13px 18px;
+    border-radius: 12px;
+    border: 1px solid var(--border);
+    background: rgba(255,255,255,0.02);
+    color: var(--text);
+    font-size: 14px;
+    font-weight: 400;
+    transition: background 0.2s, border-color 0.2s, transform 0.2s, box-shadow 0.2s;
+    position: relative;
+    overflow: hidden;
+  }
+  body.light a { background: rgba(0,0,0,0.02); }
+
+  a::before {
+    content: '';
+    position: absolute; left: 0; top: 0; bottom: 0;
+    width: 3px;
+    background: var(--accent);
+    transform: scaleY(0);
+    transition: transform 0.2s cubic-bezier(0.22,1,0.36,1);
+    transform-origin: bottom;
+    border-radius: 0 2px 2px 0;
+  }
+
+  a:hover {
+    background: rgba(200,169,110,0.07);
+    border-color: rgba(200,169,110,0.3);
+    transform: translateX(4px);
+    box-shadow: 0 4px 20px rgba(0,0,0,0.15);
+  }
+  a:hover::before { transform: scaleY(1); }
+
+  .link-label { display: flex; align-items: center; gap: 10px; }
+  .link-icon {
+    width: 30px; height: 30px;
     border-radius: 8px;
-    transition: 0.3s;
-    font-weight: bold;
-}
+    background: rgba(200,169,110,0.12);
+    display: flex; align-items: center; justify-content: center;
+    font-size: 13px;
+    flex-shrink: 0;
+    transition: background 0.2s;
+  }
+  a:hover .link-icon { background: rgba(200,169,110,0.22); }
 
-/* Hover */
-a:hover {
-    background-color: #0077ff;
-    transform: scale(1.05);
-}
+  .link-arrow {
+    color: var(--sub);
+    font-size: 16px;
+    transition: transform 0.2s, color 0.2s;
+    flex-shrink: 0;
+  }
+  a:hover .link-arrow { transform: translateX(3px); color: var(--accent); }
+
+  /* ── Footer row ── */
+  .footer-row {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-top: 28px;
+  }
+
+  .dot {
+    width: 7px; height: 7px;
+    border-radius: 50%;
+    background: var(--accent);
+    display: inline-block;
+    margin-right: 6px;
+    animation: pulse 2.5s ease-in-out infinite;
+  }
+  @keyframes pulse {
+    0%,100% { opacity: 1; transform: scale(1); }
+    50%      { opacity: 0.4; transform: scale(0.8); }
+  }
+
+  .status-text { font-size: 12px; color: var(--sub); }
+
+  /* ── Toggle button ── */
+  .toggle {
+    background: var(--card);
+    border: 1px solid var(--border);
+    color: var(--sub);
+    padding: 8px 14px;
+    border-radius: 999px;
+    cursor: pointer;
+    font-size: 12px;
+    font-family: 'DM Sans', sans-serif;
+    display: flex; align-items: center; gap: 6px;
+    transition: color 0.2s, border-color 0.2s, background 0.2s;
+  }
+  .toggle:hover { color: var(--text); border-color: var(--accent); background: rgba(200,169,110,0.07); }
+  .toggle-icon { font-size: 14px; transition: transform 0.5s; }
+  .toggle:hover .toggle-icon { transform: rotate(30deg); }
 </style>
-
 </head>
-
 <body>
 
-<div class="container">
-    <h1>Projetos Frontend 2026</h1>
-    <p>Escolha um dos sites abaixo:</p>
+<div class="bg-mesh">
+  <div class="blob blob-1"></div>
+  <div class="blob blob-2"></div>
+  <div class="blob blob-3"></div>
+</div>
+<div class="noise"></div>
 
-    <ul>
-        <li><a href="atividade Front-end Colecionador/">Abrir site colecionador (atividade 1)</a></li>
-        <li><a href="atividade Front-end Material de Estudos/">Abrir Material de estudos (atividade 2)</a></li>
-        <li><a href="atividade Front-end Arquivo Confuso da Computação">Abrir Arquivo confuso da computação (atividade 3)</a></li>
-        <li><a href="atividade Front-end Arquivo Confuso da computação (daysiUI)">Abrir Arquivo confuso da computação (daysiUI) (atividade 4)</a></li>
-        <li><a href="Arquivo confuso da computação">Abrir Arquivo confuso da computação (Bootstrap) (atividade 5)</a></li>
-    </ul>
+<div class="card">
+  <div class="header">
+    <div class="eyebrow">Portfólio</div>
+    <h1>Projetos <em>Frontend</em><br>2026</h1>
+    <p class="subtitle">Selecione um dos projetos abaixo para visualizar.</p>
+  </div>
+
+  <div class="divider"></div>
+
+  <ul>
+    <li>
+      <a href="atividade Front-end Colecionador/">
+        <span class="link-label">
+          <span class="link-icon">🗂️</span>
+          Colecionador
+        </span>
+        <span class="link-arrow">→</span>
+      </a>
+    </li>
+    <li>
+      <a href="atividade Front-end Material de Estudos/">
+        <span class="link-label">
+          <span class="link-icon">📚</span>
+          Material de Estudos
+        </span>
+        <span class="link-arrow">→</span>
+      </a>
+    </li>
+    <li>
+      <a href="atividade Front-end Arquivo Confuso da Computação">
+        <span class="link-label">
+          <span class="link-icon">💾</span>
+          Arquivo Confuso
+        </span>
+        <span class="link-arrow">→</span>
+      </a>
+    </li>
+    <li>
+      <a href="atividade Front-end Arquivo Confuso da computação (daysiUI)">
+        <span class="link-label">
+          <span class="link-icon">✨</span>
+          Arquivo (daysiUI)
+        </span>
+        <span class="link-arrow">→</span>
+      </a>
+    </li>
+    <li>
+      <a href="Arquivo confuso da computação">
+        <span class="link-label">
+          <span class="link-icon">🅱️</span>
+          Arquivo (Bootstrap)
+        </span>
+        <span class="link-arrow">→</span>
+      </a>
+    </li>
+  </ul>
+
+  <div class="footer-row">
+    <span class="status-text"><span class="dot"></span>5 projetos ativos</span>
+    <button class="toggle" onclick="toggleTheme()">
+      <span class="toggle-icon" id="themeIcon">☀️</span>
+      <span id="themeLabel">Tema claro</span>
+    </button>
+  </div>
 </div>
 
+<script>
+  let isLight = false;
+  function toggleTheme() {
+    isLight = !isLight;
+    document.body.classList.toggle('light', isLight);
+    document.getElementById('themeIcon').textContent = isLight ? '🌙' : '☀️';
+    document.getElementById('themeLabel').textContent = isLight ? 'Tema escuro' : 'Tema claro';
+  }
+</script>
 </body>
 </html>
+
