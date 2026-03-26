@@ -71,6 +71,13 @@ function controlador() {
 
 function alimentar() {
 
+     if (estadoAtual === "morto") {
+        estadoAtual = "normal";
+        vida = 70; 
+
+        controlador(); 
+    }
+
     cria.style.width = "600px";
     cria.style.transform = "scale(1) translateY(0)";
     cria.src = estados.comendo;
