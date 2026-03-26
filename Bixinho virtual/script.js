@@ -33,8 +33,20 @@ function controlador() {
 }
 
 function alimentar() {
-   cria.src = estados.comendo; 
-   contador = 0;
+    cria.src = estados.comendo;
+    contador = 0;
+    console.log("comeu");
+
+    if(time_click) clearInterval(time_click)
+
+        time_click = setTimeout(() => {
+            cria.src = estados.alimentado;
+            time_out = setTimeout (() => {
+                cria.src = estados.normal;
+            },2000);
+        },1000);
+
+
 }
 
 controlador();
