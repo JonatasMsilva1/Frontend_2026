@@ -20,7 +20,6 @@
 		padding: 10px;
 		margin-botton: 15px;
 		border 2px; solid #000faf;
-		border-radius: 15px;
 	}
 
 	.total {
@@ -42,16 +41,29 @@
 			</div>
 			
 			<div class="col-md-5">
+				
 				<div class="painel">
-					<div class="painel">
-						Total: R$ <span class="total">0.00</span>
-					</div>
+					Total: R$ <span class="total">0.00</span>
+				</div>
 
-					<div class="painel">
+				<br>
+
+				<div class="painel">
 					<label> Código de barras <label>
 					<input type="text" id="cod" class="form-control">
-					</div>
 				</div>
+
+				<br>
+
+				<div class="painel">
+					<label> Quantidade <label>
+					<input type="number" id="qtd" class="form-control">
+				</div>
+				
+				
+				<button class="btn btn-success w-100" onclick="addProduto()">
+					Adicionar Produto
+				</button>
 			</div>
 		</div>
 	</div>
