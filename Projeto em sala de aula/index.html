@@ -14,6 +14,20 @@
 		font-weight: bold;
 		border 2px; solid #000faf;
 	}
+
+	.painel {
+		background: #aaa;
+		padding: 10px;
+		margin-botton: 15px;
+		border 2px; solid #000faf;
+		border-radius: 15px;
+	}
+
+	.total {
+		font-size: 32px;
+		text-align: right;
+		font-weight: bold;
+	}
    </style>
 </head>
 <body class="bg-primary bg-gradient">
@@ -23,11 +37,24 @@
 		<div class="row mt-3">
 			
 			<div class="col-md-7">
+				<h3 class="text-white"> <span class="badge text-bg-prymari"> Sua Compra </span></h3>
+				<ul id="lista" class="list-group lista"></ul>
+			</div>
+			
+			<div class="col-md-5">
+				<div class="painel">
+					<div class="painel">
+						Total: R$ <span class="total">0.00</span>
+					</div>
 
+					<div class="painel">
+					<label> Código de barras <label>
+					<input type="text" id="cod" class="form-control">
+					</div>
+				</div>
 			</div>
 		</div>
 	</div>
-
-		
+	
 </body>
 </html>
