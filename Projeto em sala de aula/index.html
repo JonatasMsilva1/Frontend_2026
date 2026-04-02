@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Caixa Livre</title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-      sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
 
     <style> 
 	.topo {
@@ -12,14 +12,14 @@
 		text-align: center;
 		font-size: 43px;
 		font-weight: bold;
-		border 2px; solid #000faf;
+		border: 2px; solid: #000faf;
 	}
 
 	.painel {
 		background: #aaa;
 		padding: 10px;
 		margin-botton: 15px;
-		border 2px; solid #000faf;
+		border: 2px; solid: #000faf;
 	}
 
 	.total {
@@ -27,6 +27,7 @@
 		text-align: right;
 		font-weight: bold;
 	}
+
    </style>
 </head>
 <body class="bg-primary bg-gradient">
@@ -51,13 +52,13 @@
 				<div class="painel">
 					<label> Código de barras <label>
 					<input type="text" id="cod" class="form-control">
-				</div>
-
+				</div>		
+					
 				<br>
 
 				<div class="painel">
 					<label> Quantidade <label>
-					<input type="number" id="qtd" class="form-control">
+					<input type="number" id="qtd" class="form-control" value="1">
 				</div>
 				
 				
@@ -68,5 +69,6 @@
 		</div>
 	</div>
 	
+<script src="script.js">	</script>
 </body>
 </html>
