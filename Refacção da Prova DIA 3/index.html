@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Copa do Mundo FIFA 2026</title>
+    
+    <style>
+        /* Configurações Gerais */
+        body {
+            background-color: #f4f7f6; /* Cor de fundo suave */
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            color: #2c3e50;
+            margin: 0;
+            padding: 0;
+            text-align: center;
+        }
+
+        header {
+            padding: 30px;
+            background: #ffffff;
+            border-bottom: 1px solid #ddd;
+        }
+
+        .logo-copa {
+            width: 180px;
+            margin-bottom: 15px;
+        }
+
+        /* Questão 01: Navegação */
+        nav {
+            margin-top: 15px;
+        }
+
+        nav a {
+            text-decoration: none;
+            color: #007bff;
+            font-weight: bold;
+            margin: 0 15px;
+            font-size: 18px;
+        }
+
+        /* Questão 02: Estilização de Classe para Seções */
+        .secao-copa {
+            background-color: #ffffff; /* Fundo suave da seção */
+            border-radius: 12px; /* Border-radius solicitado */
+            padding: 25px;
+            margin: 20px auto;
+            max-width: 800px;
+            text-align: left; /* Alinhamento solicitado */
+            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+        }
+
+        .secao-copa h2 {
+            font-size: 26px; /* Destaque nos títulos */
+            font-weight: bold;
+            color: #1a1a1a;
+            text-align: center;
+        }
+
+        .secao-copa p {
+            font-size: 16px;
+            line-height: 1.8;
+        }
+
+        /* Estilo dos Botões */
+        .btn-acao {
+            background-color: #28a745;
+            color: white;
+            border: none;
+            padding: 12px 24px;
+            font-size: 16px;
+            font-weight: bold;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: 0.3s;
+            margin: 10px;
+        }
+
+        .btn-acao:hover {
+            background-color: #218838;
+        }
+
+        .btn-revelar {
+            background-color: #007bff;
+        }
+
+        /* Estilo da Imagem da Tabela */
+        #area-imagem img {
+            margin-top: 20px;
+            max-width: 90%;
+            border-radius: 10px;
+            border: 2px solid #ddd;
+        }
+
+        /* Questão 04: Card do Jogador */
+        .card-jogador {
+            text-align: center;
+            border: 1px solid #eee;
+            padding: 20px;
+            border-radius: 15px;
+            background: #fafafa;
+        }
+
+        .img-principal {
+            width: 250px;
+            height: auto;
+            border-radius: 10px;
+            background-color: #ddd; /* Fundo enquanto não carrega */
+        }
+
+        /* Classe placeholder que será removida */
+        .placeholder {
+            color: transparent;
+            background-color: #e0e0e0;
+            display: inline-block;
+            min-width: 100px;
+            border-radius: 4px;
+        }
+
+        /* Classe final que será aplicada */
+        .card-text {
+            color: #2c3e50;
+            font-weight: 500;
+            background-color: transparent;
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <img src="FIFA-World-Cup-26.jpg" alt="Logo Copa 2026" class="logo-copa">
+        <h1>Copa do Mundo FIFA 2026</h1>
+        <nav>
+            <a href="#organizacao">Organização</a>
+            <a href="#formato">Novo Formato</a>
+            <a href="#expectativas">Expectativas</a>
+            <a href="#perfil-jogador">Destaque</a>
+        </nav>
+    </header>
+
+    <main>
+        <section id="organizacao" class="secao-copa">
+            <h2>🌍 Organização e Sedes</h2>
+            <p>A Copa do Mundo FIFA de 2026 será a primeira edição realizada em três países: Estados Unidos, Canadá e México. Essa será também a maior Copa da história em número de cidades-sede, com partidas distribuídas por diversas regiões da América do Norte.</p>
+        </section>
+
+        <section id="formato" class="secao-copa">
+            <h2>⚽ Novo Formato</h2>
+            <p>O torneio contará com 48 seleções, em vez das tradicionais 32. As equipes serão divididas em grupos, aumentando o número total de jogos e dando mais oportunidades para países de diferentes continentes participarem.</p>
+        </section>
+
+        <section id="expectativas" class="secao-copa">
+            <h2>🏆 Expectativas e Impacto</h2>
+            <p>A edição de 2026 promete ser uma das mais assistidas da história, com grande impacto econômico e cultural nos países-sede, fortalecendo o esporte em novas regiões.</p>
+        </section>
+
+        <div style="margin: 40px 0;">
+            <button onclick="mostrarTabela()" class="btn-acao">Mostrar Tabela de Jogos</button>
+            <div id="area-imagem"></div>
+        </div>
+
+        <hr style="width: 80%; margin: 40px auto;">
+
+        <section id="perfil-jogador" class="secao-copa">
+            <h2 style="margin-bottom: 20px;">Estrela da Competição</h2>
+            <div class="card-jogador">
+                <img src="FIFA-World-Cup-26.jpg" alt="Jogador" class="img-principal">
+                
+                <div style="margin-top: 20px; text-align: left; display: inline-block;">
+                    <p>⚽ <strong>Nome:</strong> <span id="nome" class="placeholder">...</span></p>
+                    <p>📅 <strong>Nascimento:</strong> <span id="nascimento" class="placeholder">...</span></p>
+                    <p>📏 <strong>Altura:</strong> <span id="altura" class="placeholder">...</span></p>
+                    <p>🏃 <strong>Posição:</strong> <span id="posicao" class="placeholder">...</span></p>
+                    <p>🏃 <strong>Rank:</strong> <span id="rank" class="placeholder">...</span></p>
+                </div>
+                <br>
+                <button onclick="revelar()" class="btn-acao btn-revelar">Revelar</button>
+            </div>
+        </section>
+    </main>
+
+    <script>
+        /**
+         * QUESTÃO 03: Mostrar Tabela
+         */
+        function mostrarTabela() {
+            const area = document.getElementById('area-imagem');
+            const img = document.createElement('img');
+            img.src = 'Tabela_Jogos.png'; 
+            img.alt = 'Tabela de Jogos';
+            
+            area.innerHTML = ''; 
+            area.appendChild(img);
+        }
+
+        /**
+         * QUESTÃO 04: Revelar Jogador
+         */
+        function revelar() {
+            // 1. Alterar a imagem (Certifique-se que a pasta se chama img_)
+            const foto = document.querySelector('.img-principal');
+            if (foto) {
+                foto.src = '_vinicius_junior.png';
+            }
+
+            // 2. Substituir conteúdos dos spans
+            document.getElementById('nome').textContent = 'Vinícius José Paixão de Oliveira Júnior';
+            document.getElementById('nascimento').textContent = '12/07/2000 (25 anos)';
+            document.getElementById('altura').textContent = '1,76 m';
+            document.getElementById('posicao').textContent = 'Ponta-esquerda / Atacante';
+            document.getElementById('rank').textContent = '9,5';
+
+            // 3 e 4. Remover 'placeholder' e aplicar 'card-text'
+            const elementos = document.querySelectorAll('.placeholder');
+            elementos.forEach(item => {
+                item.classList.remove('placeholder');
+                item.classList.add('card-text');
+            });
+        }
+    </script>
+
+</body>
+</html>
