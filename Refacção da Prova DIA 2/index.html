@@ -1,0 +1,243 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Prova Web - Copa do Mundo 2026</title>
+    <style>
+        /* --- CSS (Questão 02) --- */
+        body {
+            background-color: #f4f7f6; /* Cor de fundo suave */
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            color: #2c3e50;
+            margin: 0;
+            padding: 20px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        header {
+            text-align: center;
+            background: #ffffff;
+            padding: 20px;
+            border-radius: 15px;
+            width: 100%;
+            max-width: 900px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+            margin-bottom: 20px;
+        }
+
+        .logo-copa {
+            width: 180px;
+            margin-bottom: 10px;
+        }
+
+        nav a {
+            text-decoration: none;
+            color: #007bff;
+            font-weight: bold;
+            margin: 0 15px;
+            font-size: 18px;
+        }
+
+        /* Estilização dos Cartões (Questão 01 e 02) */
+        #container-grupos, #container-jogadores {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 20px;
+            width: 100%;
+            max-width: 1000px;
+        }
+
+        .card-item {
+            background-color: #ffffff;
+            border-radius: 12px;
+            padding: 20px;
+            width: 280px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+            text-align: left;
+            border: 1px solid #ddd;
+        }
+
+        .card-item h2 {
+            font-size: 22px;
+            color: #1a1a1a;
+            text-align: center;
+            border-bottom: 2px solid #007bff;
+            padding-bottom: 10px;
+        }
+
+        ul { list-style: none; padding: 0; }
+        li { padding: 5px 0; border-bottom: 1px solid #eee; }
+
+        details {
+            margin-top: 15px;
+            cursor: pointer;
+            color: #555;
+            font-size: 0.9em;
+        }
+
+        /* Imagens dos Jogadores */
+        .img-jogador {
+            width: 100%;
+            border-radius: 10px;
+            margin-bottom: 15px;
+            background-color: #eee;
+        }
+
+        /* Botões */
+        .btn-prova {
+            padding: 12px 25px;
+            border: none;
+            border-radius: 8px;
+            font-weight: bold;
+            cursor: pointer;
+            margin: 10px;
+            transition: 0.3s;
+            color: white;
+        }
+
+        .btn-proximo { background-color: #28a745; }
+        .btn-voltar { background-color: #6c757d; }
+        .btn-add { background-color: #007bff; }
+
+        /* Estilo Placeholder (Questão 04) */
+        .placeholder {
+            background-color: #e0e0e0;
+            color: transparent;
+            border-radius: 4px;
+            display: inline-block;
+            min-width: 80px;
+        }
+
+        .card-text { color: #2c3e50; background: none; }
+    </style>
+</head>
+<body>
+
+    <header>
+        <img src="FIFA-World-Cup-26.jpg" alt="Logo Copa 2026" class="logo-copa">
+        <h1>Copa do Mundo FIFA 2026</h1>
+        <nav>
+            <a href="#container-grupos">Grupos</a>
+            <a href="#container-jogadores">Jogadores</a>
+        </nav>
+    </header>
+
+    <div id="container-grupos">
+        <div class="card-item">
+            <h2>🅰️ Grupo A</h2>
+            <ul><li>México</li><li>África do Sul</li><li>Coreia do Sul</li><li>República Tcheca</li></ul>
+            <details>
+                <summary>Saiba Mais</summary>
+                <p>O jogo de abertura será México x África do Sul.</p>
+            </details>
+        </div>
+
+        <div class="card-item">
+            <h2>🅱️ Grupo B</h2>
+            <ul><li>Canadá</li><li>Suíça</li><li>Catar</li><li>Bósnia</li></ul>
+            <details>
+                <summary>Saiba Mais</summary>
+                <p>O Canadá joga em casa, fator importante de desempenho.</p>
+            </details>
+        </div>
+
+        <div class="card-item">
+            <h2>🅲 Grupo C</h2>
+            <ul><li>Brasil</li><li>Marrocos</li><li>Haiti</li><li>Escócia</li></ul>
+            <details>
+                <summary>Saiba Mais</summary>
+                <p>Brasil nunca perdeu para a Escócia em Copas.</p>
+            </details>
+        </div>
+    </div>
+
+    <div style="margin: 20px;">
+        <button class="btn-prova btn-proximo" onclick="alternarGrupos()">Próximo</button>
+        <button class="btn-prova btn-voltar" onclick="voltarGrupos()">Voltar</button>
+    </div>
+
+    <hr style="width: 80%; margin: 30px;">
+
+    <div id="container-jogadores">
+        <div class="card-item">
+            <img src="_vinicius_junior.png" alt="Vini Jr" class="img-jogador">
+            <h5>Estrela: <span id="nome" class="placeholder">...</span></h5>
+            <p>Posição: <span id="posicao" class="placeholder">...</span></p>
+            <button class="btn-prova btn-add" style="width: 100%; margin: 10px 0;" onclick="revelarVini()">Revelar Vini Jr</button>
+        </div>
+    </div>
+
+    <div style="margin: 20px;">
+        <button class="btn-prova btn-add" onclick="addPaqueta()">Adicionar Lucas Paquetá</button>
+    </div>
+
+    <script>
+        // Guardar o HTML inicial dos grupos
+        const htmlInicial = document.getElementById('container-grupos').innerHTML;
+
+        // Função Questão 03: Próximo
+        function alternarGrupos() {
+            const novosGrupos = `
+                <div class="card-item">
+                    <h2>🅳 Grupo D</h2>
+                    <ul><li>EUA</li><li>Paraguai</li><li>Austrália</li><li>Turquia</li></ul>
+                    <details><summary>Saiba Mais</summary>Os EUA jogam em casa.</details>
+                </div>
+                <div class="card-item">
+                    <h2>🅴 Grupo E</h2>
+                    <ul><li>Alemanha</li><li>Equador</li><li>Costa do Marfim</li><li>Curaçao</li></ul>
+                    <details><summary>Saiba Mais</summary>Alemanha costuma dominar grupos.</details>
+                </div>
+                <div class="card-item">
+                    <h2>🅵 Grupo F</h2>
+                    <ul><li>Holanda</li><li>Japão</li><li>Tunísia</li><li>Suécia</li></ul>
+                    <details><summary>Saiba Mais</summary>Brasil e Marrocos dividiram grupo em 98.</details>
+                </div>
+            `;
+            document.getElementById('container-grupos').innerHTML = novosGrupos;
+        }
+
+        // Função Questão 03: Voltar
+        function voltarGrupos() {
+            document.getElementById('container-grupos').innerHTML = htmlInicial;
+        }
+
+        // Função Revelar Vini Jr (Questão 04)
+        function revelarVini() {
+            const elNome = document.getElementById('nome');
+            const elPos = document.getElementById('posicao');
+            
+            elNome.textContent = "Vinícius Júnior";
+            elPos.textContent = "Ponta-esquerda";
+            
+            elNome.classList.remove('placeholder');
+            elPos.classList.remove('placeholder');
+            elNome.classList.add('card-text');
+            elPos.classList.add('card-text');
+        }
+
+        // Função Questão 04: Adicionar Paquetá
+        function addPaqueta() {
+            const container = document.getElementById('container-jogadores');
+            
+            // Criando o card conforme sua imagem: Lucas_Paqueta.webp
+            const novoCard = `
+                <div class="card-item">
+                    <img src="Lucas_Paqueta.webp" alt="Lucas Paquetá" class="img-jogador">
+                    <h5>Nome: Lucas Paquetá</h5>
+                    <p>Nascimento: 27/08/1997</p>
+                    <p>Posição: Meio-campista</p>
+                    <p>Rank: 8,8</p>
+                </div>
+            `;
+            
+            container.insertAdjacentHTML('beforeend', novoCard);
+        }
+    </script>
+
+</body>
+</html>
