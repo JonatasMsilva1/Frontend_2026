@@ -165,8 +165,10 @@
     <div id="container-jogadores">
         <div class="card-item">
             <img src="vinicius_junior.png" alt="Vini Jr" class="img-jogador">
-            <h5>Estrela: <span id="nome" class="placeholder">...</span></h5>
+            <h5>Nome: <span id="nome" class="placeholder">...</span></h5>
+            <p>Nascimento: <span id="nascimento" class="placeholder">...</span></p>
             <p>Posição: <span id="posicao" class="placeholder">...</span></p>
+            <p>Rank: <span id="rank" class="placeholder">...</span></p>
             <button class="btn-prova btn-add" style="width: 100%; margin: 10px 0;" onclick="revelarVini()">Revelar Vini Jr</button>
         </div>
     </div>
@@ -209,16 +211,22 @@
         // Função Revelar Vini Jr (Questão 04)
         function revelarVini() {
             const elNome = document.getElementById('nome');
+            const elNascimento = document.getElementById('nascimento');
             const elPos = document.getElementById('posicao');
-            
+            const elRank = document.getElementById('rank');
+        
             elNome.textContent = "Vinícius Júnior";
+            elNascimento.textContent = "12/07/2000";
             elPos.textContent = "Ponta-esquerda";
-            
-            elNome.classList.remove('placeholder');
-            elPos.classList.remove('placeholder');
-            elNome.classList.add('card-text');
-            elPos.classList.add('card-text');
+            elRank.textContent = "9,5";
+        
+            [elNome, elNascimento, elPos, elRank].forEach(el => {
+                el.classList.remove('placeholder');
+                el.classList.add('card-text');
+            });
         }
+
+
 
         // Função Questão 04: Adicionar Paquetá
         function addPaqueta() {
