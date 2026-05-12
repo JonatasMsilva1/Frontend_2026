@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Conversor de Temperatura</title>
+
+</head>
+<style>
+    
+
+    * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+
+        font-family: Arial, Helvetica, sans-serif;
+    }
+
+    body {
+        background-color: #f2f2f2;
+
+        display: flex;
+        justify-content: center;
+        align-items: center;
+
+        height: 100vh;
+    }
+
+    .container {
+        background-color: white;
+
+        width: 380px;
+
+        padding: 30px;
+
+        border-radius: 12px;
+
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    }
+
+    h1 {
+        text-align: center;
+
+        margin-bottom: 30px;
+
+        color: #333;
+    }
+
+    .campo {
+        display: flex;
+        flex-direction: column;
+
+        margin-bottom: 20px;
+    }
+
+    label {
+        margin-bottom: 8px;
+
+        font-weight: bold;
+
+        color: #444;
+    }
+
+    input {
+        padding: 12px;
+
+        border: 1px solid #ccc;
+        border-radius: 8px;
+
+        font-size: 16px;
+    }
+
+    input:focus {
+        outline: none;
+
+        border-color: #4a90e2;
+    }
+</style>
+
+<body>
+
+    <div class="container">
+
+        <h1>Conversor de Temperatura</h1>
+
+        <div class="campo">
+
+            <label for="celsius">
+                Celsius (°C)
+            </label>
+
+            <input type="number" id="celsius" placeholder="Digite em Celsius" step="0.1">
+
+        </div>
+
+        <div class="campo">
+
+            <label for="fahrenheit">
+                Fahrenheit (°F)
+            </label>
+
+            <input type="number" id="fahrenheit" placeholder="Digite em Fahrenheit" step="0.1">
+
+        </div>
+
+    </div>
+
+    <script>
+        const celsius = document.getElementById("celsius")
+        const fahrenheit = document.getElementById("fahrenheit")
+
+        celsius.addEventListener("input", () => {
+           
+            let c = Number(celsius.value)
+
+            f = (c * 9/5) + 32
+
+            fahrenheit.value = f
+
+        })
+
+        fahrenheit.addEventListener("input", () => {
+
+           let f = Number(fahrenheit.value)
+
+           c = (f - 32) * 5/9
+
+           celsius.value = c
+
+        })
+
+    </script>
+</body>
+
+</html>
