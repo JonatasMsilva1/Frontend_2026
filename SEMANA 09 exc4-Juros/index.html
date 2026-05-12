@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<title>Infinity Bank</title>
+
+<style>
+    * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+        font-family: Arial;
+    }
+
+    body {
+        background: #f2f2f2;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+    }
+
+    .container {
+        background: white;
+        padding: 25px;
+        width: 400px;
+        border-radius: 12px;
+        box-shadow: 0 0 10px rgba(0,0,0,0.1);
+    }
+
+    h1 {
+        text-align: center;
+        margin-bottom: 20px;
+    }
+
+    .campo {
+        margin-bottom: 15px;
+        display: flex;
+        flex-direction: column;
+    }
+
+    label {
+        margin-bottom: 5px;
+        font-weight: bold;
+    }
+
+    input, select {
+        padding: 10px;
+        border: 1px solid #ccc;
+        border-radius: 8px;
+    }
+
+    button {
+        width: 100%;
+        padding: 12px;
+        border: none;
+        background: #4a90e2;
+        color: white;
+        border-radius: 8px;
+        cursor: pointer;
+        font-weight: bold;
+        margin-top: 10px;
+    }
+
+    button:hover {
+        background: #3576c5;
+    }
+
+    #resultado {
+        margin-top: 20px;
+        font-weight: bold;
+        line-height: 1.6;
+    }
+</style>
+</head>
+
+<body>
+
+<div class="container">
+
+    <h1>Infinity Bank</h1>
+
+    <div class="campo">
+        <label>Valor da compra</label>
+        <input type="number" id="valor" step="0.01">
+    </div>
+
+    <div class="campo">
+        <label>Bandeira</label>
+        <select id="bandeira">
+            <option value="visa">Visa</option>
+            <option value="master">Master</option>
+            <option value="elo">Elo</option>
+        </select>
+    </div>
+
+    <div class="campo">
+        <label>Parcelas</label>
+        <input type="number" id="parcelas">
+    </div>
+
+    <button onclick="calcular()">Calcular</button>
+
+    <div id="resultado"></div>
+
+</div>
+
+<script>
+function calcular() {
+
+    const valor = Number(document.getElementById("valor").value);
+    const bandeira = document.getElementById("bandeira").value;
+    const parcelas = Number(document.getElementById("parcelas").value);
+
+    let taxa = 0;
+
+    switch (bandeira) {
+        case "visa":
+            taxa = valor * 0.02;
+            break;
+
+        case "master":
+            taxa = valor * 0.0185;
+            break;
+
+        case "elo":
+            taxa = valor * 0.03;
+            break;
+    }
+
+    let juros = valor * (0.0035 * parcelas);
+
+    let taxaMensal = 12.50 * parcelas;
+
+    let total = valor + taxa + juros + taxaMensal;
+
+    let valorParcela = total / parcelas;
+
+    document.getElementById("resultado").innerHTML =
+        "Taxa da bandeira: R$ " + taxa.toFixed(2) + "<br>" +
+        "Juros: R$ " + juros.toFixed(2) + "<br>" +
+        "Taxa mensal: R$ " + taxaMensal.toFixed(2) + "<br>" +
+        "Total: R$ " + total.toFixed(2) + "<br>" +
+        "Valor da parcela: R$ " + valorParcela.toFixed(2);
+}
+</script>
+
+</body>
+</html>
