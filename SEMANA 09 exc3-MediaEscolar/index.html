@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Média Escolar</title>
+
+    <link rel="stylesheet" href="style.css">
+</head>
+<style>
+    * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+        font-family: Arial, Helvetica, sans-serif;
+    }
+
+    body {
+        background-color: #f2f2f2;
+
+        display: flex;
+        justify-content: center;
+        align-items: center;
+
+        height: 100vh;
+    }
+
+    .container {
+        background-color: white;
+
+        width: 380px;
+
+        padding: 30px;
+
+        border-radius: 12px;
+
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    }
+
+    h1 {
+        text-align: center;
+        margin-bottom: 20px;
+        color: #333;
+    }
+
+    .campo {
+        display: flex;
+        flex-direction: column;
+
+        margin-bottom: 15px;
+    }
+
+    label {
+        margin-bottom: 6px;
+        font-weight: bold;
+        color: #444;
+    }
+
+    input {
+        padding: 10px;
+
+        border: 1px solid #ccc;
+        border-radius: 8px;
+
+        font-size: 16px;
+    }
+
+    input:focus {
+        outline: none;
+        border-color: #4a90e2;
+    }
+
+    button {
+        width: 100%;
+
+        padding: 12px;
+
+        border: none;
+        border-radius: 8px;
+
+        background-color: #4a90e2;
+        color: white;
+
+        font-size: 16px;
+        font-weight: bold;
+
+        cursor: pointer;
+
+        margin-top: 10px;
+    }
+
+    button:hover {
+        background-color: #3576c5;
+    }
+
+    #resultado {
+        margin-top: 20px;
+
+        text-align: center;
+
+        font-size: 18px;
+        font-weight: bold;
+    }
+</style>
+
+<body>
+
+    <div class="container">
+
+        <h1>Média Escolar</h1>
+
+        <div class="campo">
+            <label>Nome do aluno</label>
+            <input type="text" id="nome" placeholder="Digite o nome">
+        </div>
+
+        <div class="campo">
+            <label>Nota 1</label>
+            <input type="number" id="nota1" step="0.1">
+        </div>
+
+        <div class="campo">
+            <label>Nota 2</label>
+            <input type="number" id="nota2" step="0.1">
+        </div>
+
+        <div class="campo">
+            <label>Nota 3</label>
+            <input type="number" id="nota3" step="0.1">
+        </div>
+
+        <button id="calcular">
+            Calcular média
+        </button>
+
+        <div id="resultado"></div>
+
+    </div>
+
+    <script>
+        const nota1 = document.getElementById('nota1')
+        const nota2 = document.getElementById('nota2')
+        const nota3 = document.getElementById('nota3')
+        const botaoMedia = document.getElementById('calcular')
+        const resultado = document.getElementById('resultado')
+
+        botaoMedia.addEventListener(('click'), () => {
+            let n1 = Number(nota1.value)
+            let n2 = Number(nota2.value)
+            let n3 = Number(nota3.value)
+
+            let media = (n1+n2+n3) / 3
+
+            if(media >= 7){
+                resultado.innerHTML = "Aprovado"
+                resultado.style.color = "green"
+
+            }else if(media >= 4 && media <= 6.9){
+                resultado.innerHTML = "Recuperação"
+                resultado.style.color = "yellow"
+            }else{
+                resultado.innerHTML = "Reprovado"
+                resultado.style.color = "red"
+            }
+        })
+
+
+    </script>
+
+</body>
+
+</html>
