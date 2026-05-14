@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Lista VIP</title>
+
+<style>
+    body{
+        font-family: Arial, Helvetica, sans-serif;
+        background:#f0f2f5;
+        display:flex;
+        justify-content:center;
+        align-items:center;
+        height:100vh;
+    }
+
+    .card{
+        background:white;
+        width:400px;
+        padding:25px;
+        border-radius:10px;
+        box-shadow:0 0 10px rgba(0,0,0,0.1);
+    }
+
+    h1{
+        text-align:center;
+        margin-bottom:20px;
+    }
+
+    .topo{
+        display:flex;
+        gap:10px;
+    }
+
+    input{
+        flex:1;
+        padding:10px;
+    }
+
+    button{
+        padding:10px;
+        border:none;
+        cursor:pointer;
+        border-radius:5px;
+    }
+
+    .add{
+        background:#3498db;
+        color:white;
+    }
+
+    ul{
+        list-style:none;
+        padding:0;
+        margin-top:20px;
+    }
+
+    li{
+        display:flex;
+        justify-content:space-between;
+        align-items:center;
+        padding:10px 0;
+        border-bottom:1px solid #ddd;
+    }
+
+    .riscado{
+        text-decoration: line-through;
+        color:gray;
+    }
+
+    .acoes button{
+        margin-left:5px;
+    }
+
+    .concluir{
+        background:green;
+        color:white;
+    }
+
+    .editar{
+        background:orange;
+        color:white;
+    }
+
+    .excluir{
+        background:red;
+        color:white;
+    }
+</style>
+</head>
+<body>
+
+<div class="card">
+    <h1>Convidados VIP</h1>
+
+    <div class="topo">
+        <input type="text" id="nome" placeholder="Digite um nome">
+        <button class="add" onclick="adicionar()">Adicionar</button>
+    </div>
+
+    <ul id="lista"></ul>
+</div>
+
+<script>
+    function adicionar(){
+        const input = document.getElementById("nome");
+        const nome = input.value.trim();
+
+        if(nome === ""){
+            alert("Digite um nome!");
+            return;
+        }
+
+        const li = document.createElement("li");
+
+        const span = document.createElement("span");
+        span.innerText = nome;
+
+        const acoes = document.createElement("div");
+        acoes.classList.add("acoes");
+
+        // Botão concluir
+        const concluir = document.createElement("button");
+        concluir.innerText = "Concluir";
+        concluir.classList.add("concluir");
+
+        concluir.onclick = () => {
+            span.classList.toggle("riscado");
+        };
+
+        // Botão editar
+        const editar = document.createElement("button");
+        editar.innerText = "Editar";
+        editar.classList.add("editar");
+
+        editar.onclick = () => {
+            const novoNome = prompt("Novo nome:", span.innerText);
+
+            if(novoNome && novoNome.trim() !== ""){
+                span.innerText = novoNome;
+            }
+        };
+
+        // Botão excluir
+        const excluir = document.createElement("button");
+        excluir.innerText = "Excluir";
+        excluir.classList.add("excluir");
+
+        excluir.onclick = () => {
+            li.remove();
+        };
+
+        acoes.appendChild(concluir);
+        acoes.appendChild(editar);
+        acoes.appendChild(excluir);
+
+        li.appendChild(span);
+        li.appendChild(acoes);
+
+        document.getElementById("lista").appendChild(li);
+
+        input.value = "";
+    }
+</script>
+
+</body>
+</html>
