@@ -3,253 +3,524 @@
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-
 <title>Portfólio Frontend 2026</title>
-
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-
-<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@300;400;500;700&family=DM+Serif+Display:ital@0;1&display=swap" rel="stylesheet">
-
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;1,9..40,400&family=DM+Serif+Display:ital@0;1&display=swap" rel="stylesheet">
 <style>
-
-/* ===== RESET ===== */
-*,
-*::before,
-*::after{
-  margin:0;
-  padding:0;
-  box-sizing:border-box;
+*, *::before, *::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
 }
 
-:root{
-  --bg:#090b11;
-  --card:rgba(255,255,255,0.04);
-  --border:rgba(255,255,255,0.08);
-  --text:#f4f1ea;
-  --sub:#7d8499;
-  --accent:#c7a86d;
-  --accent-soft:rgba(199,168,109,0.14);
-  --blue:#6f8ec7;
-  --green:#6fc7a1;
-  --shadow:0 20px 70px rgba(0,0,0,0.45);
-  --radius:28px;
+:root {
+  --bg: #08090f;
+  --surface: rgba(255,255,255,0.038);
+  --surface-hover: rgba(255,255,255,0.065);
+  --border: rgba(255,255,255,0.075);
+  --border-hover: rgba(199,168,109,0.35);
+  --text: #f2efe8;
+  --text-secondary: #9298ae;
+  --accent: #c7a86d;
+  --accent-dim: rgba(199,168,109,0.12);
+  --accent-glow: rgba(199,168,109,0.18);
+  --blue: #6f90cc;
+  --blue-dim: rgba(111,144,204,0.12);
+  --shadow-card: 0 32px 80px rgba(0,0,0,0.55), 0 0 0 1px var(--border);
+  --shadow-glow: 0 0 90px rgba(199,168,109,0.1);
+  --radius-card: 26px;
+  --radius-item: 14px;
+  --transition: 0.22s cubic-bezier(0.4,0,0.2,1);
 }
 
-body.light{
-  --bg:#f5f2eb;
-  --card:rgba(0,0,0,0.03);
-  --border:rgba(0,0,0,0.08);
-  --text:#171717;
-  --sub:#746d66;
-  --shadow:0 20px 70px rgba(0,0,0,0.10);
+body.light {
+  --bg: #f0ede6;
+  --surface: rgba(0,0,0,0.032);
+  --surface-hover: rgba(0,0,0,0.055);
+  --border: rgba(0,0,0,0.08);
+  --border-hover: rgba(199,168,109,0.4);
+  --text: #16140f;
+  --text-secondary: #8a8276;
+  --shadow-card: 0 24px 60px rgba(0,0,0,0.1), 0 0 0 1px var(--border);
+  --shadow-glow: 0 0 90px rgba(199,168,109,0.08);
 }
 
-body{
-  min-height:100vh;
-  background:var(--bg);
-  color:var(--text);
-  font-family:'DM Sans',sans-serif;
-  display:flex;
-  justify-content:center;
-  align-items:center;
-  padding:40px 20px;
-  transition:.4s ease;
+html { scroll-behavior: smooth; }
+
+body {
+  min-height: 100vh;
+  background: var(--bg);
+  color: var(--text);
+  font-family: 'DM Sans', sans-serif;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 48px 20px;
+  transition: background var(--transition), color var(--transition);
+  overflow-x: hidden;
 }
 
-/* CARD */
-.card{
-  width:min(470px,95vw);
-  padding:42px;
-  border-radius:var(--radius);
-  background:var(--card);
-  border:1px solid var(--border);
-  backdrop-filter:blur(26px);
-  box-shadow:var(--shadow);
+.bg-layer {
+  position: fixed;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+  overflow: hidden;
 }
 
-/* HEADER */
-.eyebrow{
-  font-size:11px;
-  letter-spacing:.22em;
-  text-transform:uppercase;
-  color:var(--accent);
-  margin-bottom:14px;
+.blob {
+  position: absolute;
+  border-radius: 50%;
+  filter: blur(90px);
+  will-change: transform;
 }
 
-h1{
-  font-family:'DM Serif Display',serif;
-  font-size:38px;
-  line-height:1.1;
+.blob-1 {
+  width: 560px; height: 560px;
+  background: radial-gradient(circle, rgba(199,168,109,0.22) 0%, transparent 70%);
+  top: -180px; left: -180px;
+  animation: float-1 16s ease-in-out infinite;
 }
 
-h1 em{color:var(--accent)}
-
-.subtitle{
-  margin-top:12px;
-  color:var(--sub);
-  font-size:14px;
-  line-height:1.7;
+.blob-2 {
+  width: 420px; height: 420px;
+  background: radial-gradient(circle, rgba(111,144,204,0.18) 0%, transparent 70%);
+  bottom: -120px; right: -120px;
+  animation: float-2 20s ease-in-out infinite;
 }
 
-.divider{
-  margin:30px 0;
-  height:1px;
-  background:var(--border);
+.blob-3 {
+  width: 280px; height: 280px;
+  background: radial-gradient(circle, rgba(160,100,200,0.12) 0%, transparent 70%);
+  top: 45%; left: 55%;
+  animation: float-3 14s ease-in-out infinite;
 }
 
-/* CONTENT */
-.semester{
-  margin-bottom:28px;
+@keyframes float-1 {
+  0%, 100% { transform: translate(0, 0) scale(1); }
+  50%       { transform: translate(28px, 18px) scale(1.06); }
+}
+@keyframes float-2 {
+  0%, 100% { transform: translate(0, 0) scale(1); }
+  50%       { transform: translate(-22px, -14px) scale(1.05); }
+}
+@keyframes float-3 {
+  0%, 100% { transform: translate(0, 0) scale(1); }
+  33%       { transform: translate(16px, -20px) scale(1.08); }
+  66%       { transform: translate(-12px, 10px) scale(0.95); }
 }
 
-.semester-title{
-  font-size:12px;
-  letter-spacing:.15em;
-  text-transform:uppercase;
-  color:var(--sub);
-  margin-bottom:16px;
+.noise {
+  position: fixed;
+  inset: 0;
+  z-index: 1;
+  pointer-events: none;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+  opacity: 0.028;
 }
 
-ul{
-  list-style:none;
-  display:flex;
-  flex-direction:column;
-  gap:11px;
+.card {
+  position: relative;
+  z-index: 10;
+  width: min(460px, 100%);
+  padding: 44px 42px;
+  border-radius: var(--radius-card);
+  background: var(--surface);
+  border: 1px solid var(--border);
+  backdrop-filter: blur(28px);
+  -webkit-backdrop-filter: blur(28px);
+  box-shadow: var(--shadow-card), var(--shadow-glow);
+  animation: card-rise 0.65s cubic-bezier(0.22,1,0.36,1) both;
 }
 
-/* PROJECT */
-.project-link{
-  text-decoration:none;
-  display:flex;
-  justify-content:space-between;
-  align-items:center;
-  padding:15px 18px;
-  border-radius:16px;
-  background:rgba(255,255,255,0.02);
-  border:1px solid var(--border);
-  color:var(--text);
-  transition:.25s ease;
+@keyframes card-rise {
+  from { opacity: 0; transform: translateY(24px) scale(0.975); }
+  to   { opacity: 1; transform: translateY(0) scale(1); }
 }
 
-.project-link:hover{
-  transform:translateX(5px);
-  background:rgba(199,168,109,0.08);
+.header {
+  margin-bottom: 34px;
+  animation: fade-up 0.65s cubic-bezier(0.22,1,0.36,1) 0.1s both;
 }
 
-.project-left{
-  display:flex;
-  align-items:center;
-  gap:12px;
+@keyframes fade-up {
+  from { opacity: 0; transform: translateY(10px); }
+  to   { opacity: 1; transform: translateY(0); }
 }
 
-.project-icon{
-  width:34px;
-  height:34px;
-  border-radius:10px;
-  background:rgba(199,168,109,.12);
-  display:flex;
-  align-items:center;
-  justify-content:center;
+.eyebrow {
+  display: flex;
+  align-items: center;
+  gap: 9px;
+  font-size: 10.5px;
+  font-weight: 600;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--accent);
+  margin-bottom: 14px;
 }
 
-/* FOOTER */
-.footer{
-  margin-top:34px;
-  display:flex;
-  align-items:center;
-  justify-content:space-between;
+.eyebrow-dot {
+  width: 5px; height: 5px;
+  border-radius: 50%;
+  background: var(--accent);
+  animation: dot-pulse 2.8s ease-in-out infinite;
 }
 
-.theme-btn{
-  border:none;
-  cursor:pointer;
-  padding:10px 16px;
-  border-radius:999px;
-  background:rgba(255,255,255,0.06);
-  border:1px solid var(--border);
-  color:var(--text);
+@keyframes dot-pulse {
+  0%, 100% { opacity: 1; transform: scale(1); }
+  50%       { opacity: 0.35; transform: scale(0.7); }
 }
 
+.eyebrow-line {
+  flex: 1;
+  height: 1px;
+  background: linear-gradient(90deg, var(--border-hover), transparent);
+}
+
+h1 {
+  font-family: 'DM Serif Display', serif;
+  font-size: 36px;
+  line-height: 1.08;
+  letter-spacing: -0.02em;
+  color: var(--text);
+}
+
+h1 em {
+  font-style: italic;
+  color: var(--accent);
+}
+
+.subtitle {
+  margin-top: 10px;
+  color: var(--text-secondary);
+  font-size: 13.5px;
+  line-height: 1.65;
+  font-weight: 400;
+}
+
+.divider {
+  margin: 28px 0;
+  height: 1px;
+  background: linear-gradient(90deg, var(--border), transparent 80%);
+}
+
+.semester {
+  margin-bottom: 26px;
+}
+
+.semester:last-child {
+  margin-bottom: 0;
+}
+
+.semester-header {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 13px;
+}
+
+.semester-badge {
+  font-size: 10px;
+  font-weight: 600;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  padding: 4px 10px;
+  border-radius: 999px;
+  white-space: nowrap;
+  flex-shrink: 0;
+}
+
+.badge-gold {
+  color: var(--accent);
+  background: var(--accent-dim);
+  border: 1px solid rgba(199,168,109,0.22);
+}
+
+.badge-blue {
+  color: var(--blue);
+  background: var(--blue-dim);
+  border: 1px solid rgba(111,144,204,0.22);
+}
+
+.semester-line {
+  flex: 1;
+  height: 1px;
+  background: var(--border);
+}
+
+ul {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 7px;
+}
+
+li {
+  opacity: 0;
+  transform: translateX(-10px);
+}
+
+li.visible {
+  animation: item-in 0.38s cubic-bezier(0.22,1,0.36,1) forwards;
+}
+
+@keyframes item-in {
+  to { opacity: 1; transform: translateX(0); }
+}
+
+.project-link {
+  text-decoration: none;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 12px 15px;
+  border-radius: var(--radius-item);
+  background: var(--surface);
+  border: 1px solid var(--border);
+  color: var(--text);
+  font-size: 13.5px;
+  font-weight: 400;
+  position: relative;
+  overflow: hidden;
+  transition:
+    background var(--transition),
+    border-color var(--transition),
+    transform var(--transition),
+    box-shadow var(--transition);
+}
+
+.project-link::after {
+  content: '';
+  position: absolute;
+  left: 0; top: 0; bottom: 0;
+  width: 3px;
+  background: var(--accent);
+  border-radius: 0 2px 2px 0;
+  transform: scaleY(0);
+  transform-origin: center;
+  transition: transform 0.2s cubic-bezier(0.22,1,0.36,1);
+}
+
+.project-link:hover {
+  background: var(--surface-hover);
+  border-color: var(--border-hover);
+  transform: translateX(4px);
+  box-shadow: 0 4px 24px rgba(0,0,0,0.18);
+}
+
+.project-link:hover::after {
+  transform: scaleY(1);
+}
+
+.project-left {
+  display: flex;
+  align-items: center;
+  gap: 11px;
+}
+
+.project-icon {
+  width: 32px; height: 32px;
+  border-radius: 9px;
+  background: var(--accent-dim);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 14px;
+  flex-shrink: 0;
+  transition: background var(--transition), transform var(--transition);
+}
+
+.project-link:hover .project-icon {
+  background: rgba(199,168,109,0.2);
+  transform: scale(1.08);
+}
+
+.project-arrow {
+  color: var(--text-secondary);
+  font-size: 15px;
+  transition: transform var(--transition), color var(--transition);
+  flex-shrink: 0;
+}
+
+.project-link:hover .project-arrow {
+  transform: translateX(3px);
+  color: var(--accent);
+}
+
+.footer {
+  margin-top: 32px;
+  padding-top: 22px;
+  border-top: 1px solid var(--border);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.status {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.status-dot {
+  width: 7px; height: 7px;
+  border-radius: 50%;
+  background: var(--accent);
+  flex-shrink: 0;
+  animation: dot-pulse 2.8s ease-in-out infinite;
+}
+
+.status-text {
+  font-size: 12px;
+  color: var(--text-secondary);
+  font-weight: 400;
+}
+
+.status-count {
+  color: var(--text);
+  font-weight: 500;
+}
+
+.theme-btn {
+  display: flex;
+  align-items: center;
+  gap: 7px;
+  cursor: pointer;
+  padding: 8px 14px;
+  border-radius: 999px;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  color: var(--text-secondary);
+  font-family: 'DM Sans', sans-serif;
+  font-size: 12px;
+  font-weight: 500;
+  transition:
+    background var(--transition),
+    border-color var(--transition),
+    color var(--transition),
+    transform var(--transition);
+}
+
+.theme-btn:hover {
+  background: var(--surface-hover);
+  border-color: var(--border-hover);
+  color: var(--text);
+  transform: scale(1.04);
+}
+
+.theme-icon {
+  font-size: 13px;
+  transition: transform 0.5s ease;
+}
+
+.theme-btn:hover .theme-icon {
+  transform: rotate(22deg);
+}
 </style>
 </head>
-
 <body>
+
+<div class="bg-layer">
+  <div class="blob blob-1"></div>
+  <div class="blob blob-2"></div>
+  <div class="blob blob-3"></div>
+</div>
+<div class="noise"></div>
 
 <div class="card">
 
-  <div class="eyebrow">Portfólio</div>
-
-  <h1>
-    Projetos <em>Frontend</em><br>
-    2026
-  </h1>
-
-  <p class="subtitle">
-    Projetos acadêmicos e exercícios desenvolvidos durante o ano.
-  </p>
+  <div class="header">
+    <div class="eyebrow">
+      <span class="eyebrow-dot"></span>
+      Portfólio
+      <span class="eyebrow-line"></span>
+    </div>
+    <h1>Projetos <em>Frontend</em><br>2026</h1>
+    <p class="subtitle">Projetos acadêmicos e exercícios desenvolvidos durante o ano.</p>
+  </div>
 
   <div class="divider"></div>
 
   <div class="content">
 
-    <!-- 1 BIMESTRE -->
     <section class="semester">
-      <div class="semester-title">1º Bimestre</div>
-
-      <ul>
-        <li><a class="project-link" href="atividade Front-end Colecionador"><div class="project-left"><div class="project-icon">🗂️</div>Colecionador</div>→</a></li>
-
-        <li><a class="project-link" href="atividade Front-end Material de Estudos"><div class="project-left"><div class="project-icon">📚</div>Material de Estudos</div>→</a></li>
-
-        <li><a class="project-link" href="Bixinho virtual"><div class="project-left"><div class="project-icon">💖</div>Bixinho Virtual</div>→</a></li>
-
-        <li><a class="project-link" href="Arquivo confuso da computação"><div class="project-left"><div class="project-icon">💾</div>Arquivo Confuso</div>→</a></li>
-
-        <li><a class="project-link" href="atividade Front-end Arquivo Confuso da Computação"><div class="project-left"><div class="project-icon">📂</div>Arquivo Confuso da Computação</div>→</a></li>
-
-        <li><a class="project-link" href="atividade Front-end Arquivo Confuso da computação (daysiUI)"><div class="project-left"><div class="project-icon">✨</div>Arquivo (DaysiUI)</div>→</a></li>
+      <div class="semester-header">
+        <span class="semester-badge badge-gold">1º Bimestre</span>
+        <span class="semester-line"></span>
+      </div>
+      <ul id="list-1">
+        <li><a class="project-link" href="atividade Front-end Colecionador"><div class="project-left"><div class="project-icon">🗂️</div>Colecionador</div><span class="project-arrow">→</span></a></li>
+        <li><a class="project-link" href="atividade Front-end Material de Estudos"><div class="project-left"><div class="project-icon">📚</div>Material de Estudos</div><span class="project-arrow">→</span></a></li>
+        <li><a class="project-link" href="Bixinho virtual"><div class="project-left"><div class="project-icon">💖</div>Bixinho Virtual</div><span class="project-arrow">→</span></a></li>
+        <li><a class="project-link" href="Arquivo confuso da computação"><div class="project-left"><div class="project-icon">💾</div>Arquivo Confuso</div><span class="project-arrow">→</span></a></li>
+        <li><a class="project-link" href="atividade Front-end Arquivo Confuso da Computação"><div class="project-left"><div class="project-icon">📂</div>Arquivo Confuso da Computação</div><span class="project-arrow">→</span></a></li>
+        <li><a class="project-link" href="atividade Front-end Arquivo Confuso da computação (daysiUI)"><div class="project-left"><div class="project-icon">✨</div>Arquivo (DaysiUI)</div><span class="project-arrow">→</span></a></li>
       </ul>
     </section>
 
-    <!-- 2 BIMESTRE -->
     <section class="semester">
-      <div class="semester-title">2º Bimestre</div>
-
-      <ul>
-        <!-- Refações -->
-        <li><a class="project-link" href="Refacção da Prova DIA 1"><div class="project-left"><div class="project-icon">📝</div>Refação Prova Dia 1</div>→</a></li>
-
-        <li><a class="project-link" href="Refacção da Prova DIA 2"><div class="project-left"><div class="project-icon">✏️</div>Refação Prova Dia 2</div>→</a></li>
-
-        <li><a class="project-link" href="Refacção da Prova DIA 3"><div class="project-left"><div class="project-icon">🖊️</div>Refação Prova Dia 3</div>→</a></li>
-
-        <!-- Semana 09 (EXPANDIDO) -->
-        <li><a class="project-link" href="SEMANA 09 exc1-CPF"><div class="project-left"><div class="project-icon">🛡️</div>exc1-CPF</div>→</a></li>
-
-        <li><a class="project-link" href="SEMANA 09 exc2-Conversor"><div class="project-left"><div class="project-icon">🌡️</div>exc2-Conversor</div>→</a></li>
-
-        <li><a class="project-link" href="SEMANA 09 exc3-MediaEscolar"><div class="project-left"><div class="project-icon">🎓</div>exc3-MediaEscolar</div>→</a></li>
-
-        <li><a class="project-link" href="SEMANA 09 exc4-Juros"><div class="project-left"><div class="project-icon">💳</div>exc4-Juros</div>→</a></li>
-
-        <li><a class="project-link" href="SEMANA 09 exc5-Convidados VIP"><div class="project-left"><div class="project-icon">👥</div>exc5-Convidados VIP</div>→</a></li>
-
-        <li><a class="project-link" href="SEMANA 09 exc6-Eventos"><div class="project-left"><div class="project-icon">🎉</div>exc6-Eventos</div>→</a></li>
-
-        <li><a class="project-link" href="SEMANA 09 exc7-ValidadorCartao"><div class="project-left"><div class="project-icon">🔐</div>exc7-ValidadorCartao</div>→</a></li>
-
+      <div class="semester-header">
+        <span class="semester-badge badge-blue">2º Bimestre</span>
+        <span class="semester-line"></span>
+      </div>
+      <ul id="list-2">
+        <li><a class="project-link" href="Refacção da Prova DIA 1"><div class="project-left"><div class="project-icon">📝</div>Refação Prova Dia 1</div><span class="project-arrow">→</span></a></li>
+        <li><a class="project-link" href="Refacção da Prova DIA 2"><div class="project-left"><div class="project-icon">✏️</div>Refação Prova Dia 2</div><span class="project-arrow">→</span></a></li>
+        <li><a class="project-link" href="Refacção da Prova DIA 3"><div class="project-left"><div class="project-icon">🖊️</div>Refação Prova Dia 3</div><span class="project-arrow">→</span></a></li>
+        <li><a class="project-link" href="SEMANA 09 exc1-CPF"><div class="project-left"><div class="project-icon">🪪</div>exc1-CPF</div><span class="project-arrow">→</span></a></li>
+        <li><a class="project-link" href="SEMANA 09 exc2-Conversor"><div class="project-left"><div class="project-icon">🔄</div>exc2-Conversor</div><span class="project-arrow">→</span></a></li>
+        <li><a class="project-link" href="SEMANA 09 exc3-MediaEscolar"><div class="project-left"><div class="project-icon">🎓</div>exc3-MediaEscolar</div><span class="project-arrow">→</span></a></li>
+        <li><a class="project-link" href="SEMANA 09 exc4-Juros"><div class="project-left"><div class="project-icon">💰</div>exc4-Juros</div><span class="project-arrow">→</span></a></li>
+        <li><a class="project-link" href="SEMANA 09 exc5-Convidados VIP"><div class="project-left"><div class="project-icon">🎟️</div>exc5-Convidados VIP</div><span class="project-arrow">→</span></a></li>
+        <li><a class="project-link" href="SEMANA 09 exc6-Eventos"><div class="project-left"><div class="project-icon">📅</div>exc6-Eventos</div><span class="project-arrow">→</span></a></li>
+        <li><a class="project-link" href="SEMANA 09 exc7-ValidadorCartao"><div class="project-left"><div class="project-icon">💳</div>exc7-ValidadorCartao</div><span class="project-arrow">→</span></a></li>
       </ul>
     </section>
 
   </div>
 
   <div class="footer">
-    <div>15 projetos ativos</div>
-    <button class="theme-btn" onclick="document.body.classList.toggle('light')">☀️</button>
+    <div class="status">
+      <span class="status-dot"></span>
+      <span class="status-text"><span class="status-count" id="project-count">0</span> projetos ativos</span>
+    </div>
+    <button class="theme-btn" id="themeBtn" onclick="toggleTheme()">
+      <span class="theme-icon" id="themeIcon">☀️</span>
+      <span id="themeLabel">Tema claro</span>
+    </button>
   </div>
 
 </div>
 
+<script>
+  (function () {
+    const items = document.querySelectorAll('li');
+    document.getElementById('project-count').textContent = items.length;
+
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          const lis = entry.target.querySelectorAll('li');
+          lis.forEach((li, i) => {
+            setTimeout(() => li.classList.add('visible'), i * 45);
+          });
+          observer.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.1 });
+
+    document.querySelectorAll('ul').forEach(ul => observer.observe(ul));
+
+    let isLight = false;
+    window.toggleTheme = function () {
+      isLight = !isLight;
+      document.body.classList.toggle('light', isLight);
+      document.getElementById('themeIcon').textContent = isLight ? '🌙' : '☀️';
+      document.getElementById('themeLabel').textContent = isLight ? 'Tema escuro' : 'Tema claro';
+    };
+  })();
+</script>
 </body>
 </html>
