@@ -13,6 +13,7 @@
 
 <style>
 
+/* ===== RESET ===== */
 *,
 *::before,
 *::after{
@@ -22,43 +23,26 @@
 }
 
 :root{
-
   --bg:#090b11;
   --card:rgba(255,255,255,0.04);
-  --card-strong:rgba(255,255,255,0.06);
-
   --border:rgba(255,255,255,0.08);
-
   --text:#f4f1ea;
   --sub:#7d8499;
-
   --accent:#c7a86d;
   --accent-soft:rgba(199,168,109,0.14);
-
   --blue:#6f8ec7;
   --green:#6fc7a1;
-
-  --shadow:
-    0 20px 70px rgba(0,0,0,0.45);
-
+  --shadow:0 20px 70px rgba(0,0,0,0.45);
   --radius:28px;
 }
 
 body.light{
-
   --bg:#f5f2eb;
   --card:rgba(0,0,0,0.03);
-  --card-strong:rgba(0,0,0,0.05);
-
   --border:rgba(0,0,0,0.08);
-
   --text:#171717;
   --sub:#746d66;
-
-  --accent-soft:rgba(199,168,109,0.18);
-
-  --shadow:
-    0 20px 70px rgba(0,0,0,0.10);
+  --shadow:0 20px 70px rgba(0,0,0,0.10);
 }
 
 body{
@@ -69,63 +53,12 @@ body{
   display:flex;
   justify-content:center;
   align-items:center;
-  overflow-x:hidden;
   padding:40px 20px;
   transition:.4s ease;
 }
 
-.bg{
-  position:fixed;
-  inset:0;
-  overflow:hidden;
-  pointer-events:none;
-  z-index:0;
-}
-
-.blob{
-  position:absolute;
-  border-radius:50%;
-  filter:blur(90px);
-  opacity:.18;
-  animation:float 12s ease-in-out infinite alternate;
-}
-
-.blob:nth-child(1){
-  width:520px;
-  height:520px;
-  background:var(--accent);
-  top:-160px;
-  left:-180px;
-}
-
-.blob:nth-child(2){
-  width:430px;
-  height:430px;
-  background:var(--blue);
-  right:-120px;
-  bottom:-140px;
-}
-
-.blob:nth-child(3){
-  width:320px;
-  height:320px;
-  background:#af6dc8;
-  top:40%;
-  left:60%;
-}
-
-@keyframes float{
-  from{
-    transform:translate(0,0) scale(1);
-  }
-  to{
-    transform:translate(30px,20px) scale(1.08);
-  }
-}
-
+/* CARD */
 .card{
-  position:relative;
-  z-index:10;
   width:min(470px,95vw);
   padding:42px;
   border-radius:var(--radius);
@@ -135,23 +68,13 @@ body{
   box-shadow:var(--shadow);
 }
 
+/* HEADER */
 .eyebrow{
-  display:flex;
-  align-items:center;
-  gap:10px;
-  margin-bottom:14px;
   font-size:11px;
   letter-spacing:.22em;
   text-transform:uppercase;
   color:var(--accent);
-  font-weight:600;
-}
-
-.eyebrow::before{
-  content:'';
-  width:22px;
-  height:1px;
-  background:var(--accent);
+  margin-bottom:14px;
 }
 
 h1{
@@ -160,16 +83,13 @@ h1{
   line-height:1.1;
 }
 
-h1 em{
-  font-style:italic;
-  color:var(--accent);
-}
+h1 em{color:var(--accent)}
 
 .subtitle{
   margin-top:12px;
   color:var(--sub);
-  line-height:1.7;
   font-size:14px;
+  line-height:1.7;
 }
 
 .divider{
@@ -178,69 +98,17 @@ h1 em{
   background:var(--border);
 }
 
-.main-btn{
-  width:100%;
-  border:none;
-  cursor:pointer;
-  padding:15px 18px;
-  border-radius:16px;
-  background:var(--accent-soft);
-  border:1px solid rgba(199,168,109,.24);
-  color:var(--accent);
-  display:flex;
-  align-items:center;
-  justify-content:center;
-  gap:10px;
-  font-size:14px;
-  font-weight:600;
-  transition:.25s ease;
-}
-
-.main-btn:hover{
-  transform:translateY(-2px);
-}
-
-.main-btn .icon{
-  transition:.4s ease;
-}
-
-.main-btn.open .icon{
-  transform:rotate(180deg);
-}
-
-.content{
-  overflow:hidden;
-  max-height:0;
-  opacity:0;
-  transition:.5s ease;
-}
-
-.content.open{
-  max-height:5000px;
-  opacity:1;
-  margin-top:24px;
-}
-
+/* CONTENT */
 .semester{
   margin-bottom:28px;
 }
 
 .semester-title{
-  display:flex;
-  align-items:center;
-  gap:10px;
-  margin-bottom:16px;
   font-size:12px;
   letter-spacing:.15em;
   text-transform:uppercase;
   color:var(--sub);
-  font-weight:700;
-}
-
-.semester-line{
-  flex:1;
-  height:1px;
-  background:var(--border);
+  margin-bottom:16px;
 }
 
 ul{
@@ -250,11 +118,12 @@ ul{
   gap:11px;
 }
 
+/* PROJECT */
 .project-link{
   text-decoration:none;
   display:flex;
-  align-items:center;
   justify-content:space-between;
+  align-items:center;
   padding:15px 18px;
   border-radius:16px;
   background:rgba(255,255,255,0.02);
@@ -265,8 +134,7 @@ ul{
 
 .project-link:hover{
   transform:translateX(5px);
-  border-color:rgba(199,168,109,.3);
-  background:rgba(199,168,109,.08);
+  background:rgba(199,168,109,0.08);
 }
 
 .project-left{
@@ -285,84 +153,7 @@ ul{
   justify-content:center;
 }
 
-.arrow{
-  color:var(--sub);
-}
-
-.folder{
-  margin-top:14px;
-  border:1px solid var(--border);
-  border-radius:20px;
-  overflow:hidden;
-}
-
-.folder-btn{
-  width:100%;
-  border:none;
-  background:none;
-  padding:18px 20px;
-  cursor:pointer;
-  display:flex;
-  align-items:center;
-  justify-content:space-between;
-  color:var(--text);
-}
-
-.folder-left{
-  display:flex;
-  align-items:center;
-  gap:14px;
-}
-
-.folder-icon{
-  width:42px;
-  height:42px;
-  border-radius:12px;
-  background:rgba(199,168,109,.12);
-  display:flex;
-  align-items:center;
-  justify-content:center;
-}
-
-.folder-info{
-  display:flex;
-  flex-direction:column;
-  align-items:flex-start;
-}
-
-.folder-title{
-  font-size:14px;
-  font-weight:600;
-}
-
-.folder-sub{
-  margin-top:2px;
-  font-size:12px;
-  color:var(--sub);
-}
-
-.folder-arrow{
-  transition:.3s ease;
-}
-
-.folder.open .folder-arrow{
-  transform:rotate(180deg);
-}
-
-.folder-content{
-  max-height:0;
-  overflow:hidden;
-  opacity:0;
-  transition:.4s ease;
-  padding:0 16px;
-}
-
-.folder.open .folder-content{
-  max-height:2000px;
-  opacity:1;
-  padding:0 16px 16px;
-}
-
+/* FOOTER */
 .footer{
   margin-top:34px;
   display:flex;
@@ -370,29 +161,14 @@ ul{
   justify-content:space-between;
 }
 
-.status{
-  display:flex;
-  align-items:center;
-  font-size:12px;
-  color:var(--sub);
-}
-
-.dot{
-  width:7px;
-  height:7px;
-  border-radius:50%;
-  background:var(--green);
-  margin-right:8px;
-}
-
 .theme-btn{
   border:none;
   cursor:pointer;
   padding:10px 16px;
   border-radius:999px;
-  background:var(--card-strong);
+  background:rgba(255,255,255,0.06);
   border:1px solid var(--border);
-  color:var(--sub);
+  color:var(--text);
 }
 
 </style>
@@ -400,17 +176,9 @@ ul{
 
 <body>
 
-<div class="bg">
-  <div class="blob"></div>
-  <div class="blob"></div>
-  <div class="blob"></div>
-</div>
-
 <div class="card">
 
-  <div class="eyebrow">
-    Portfólio
-  </div>
+  <div class="eyebrow">Portfólio</div>
 
   <h1>
     Projetos <em>Frontend</em><br>
@@ -423,399 +191,65 @@ ul{
 
   <div class="divider"></div>
 
-  <button class="main-btn" id="toggleBtn" onclick="toggleProjects()">
-
-    <span class="icon">⌄</span>
-
-    <span id="toggleLabel">
-      Ver projetos
-    </span>
-
-  </button>
-
-  <div class="content" id="content">
+  <div class="content">
 
     <!-- 1 BIMESTRE -->
-
     <section class="semester">
-
-      <div class="semester-title">
-
-        1º Bimestre
-
-        <span class="semester-line"></span>
-
-      </div>
+      <div class="semester-title">1º Bimestre</div>
 
       <ul>
+        <li><a class="project-link" href="atividade Front-end Colecionador"><div class="project-left"><div class="project-icon">🗂️</div>Colecionador</div>→</a></li>
 
-        <li>
-          <a class="project-link" href="atividade Front-end Colecionador">
-            <div class="project-left">
-              <div class="project-icon">🗂️</div>
-              <span>Colecionador</span>
-            </div>
-            <span class="arrow">→</span>
-          </a>
-        </li>
+        <li><a class="project-link" href="atividade Front-end Material de Estudos"><div class="project-left"><div class="project-icon">📚</div>Material de Estudos</div>→</a></li>
 
-        <li>
-          <a class="project-link" href="atividade Front-end Material de Estudos">
-            <div class="project-left">
-              <div class="project-icon">📚</div>
-              <span>Material de Estudos</span>
-            </div>
-            <span class="arrow">→</span>
-          </a>
-        </li>
+        <li><a class="project-link" href="Bixinho virtual"><div class="project-left"><div class="project-icon">💖</div>Bixinho Virtual</div>→</a></li>
 
-        <li>
-          <a class="project-link" href="Bixinho virtual">
-            <div class="project-left">
-              <div class="project-icon">💖</div>
-              <span>Bixinho Virtual</span>
-            </div>
-            <span class="arrow">→</span>
-          </a>
-        </li>
+        <li><a class="project-link" href="Arquivo confuso da computação"><div class="project-left"><div class="project-icon">💾</div>Arquivo Confuso</div>→</a></li>
 
+        <li><a class="project-link" href="atividade Front-end Arquivo Confuso da Computação"><div class="project-left"><div class="project-icon">📂</div>Arquivo Confuso da Computação</div>→</a></li>
+
+        <li><a class="project-link" href="atividade Front-end Arquivo Confuso da computação (daysiUI)"><div class="project-left"><div class="project-icon">✨</div>Arquivo (DaysiUI)</div>→</a></li>
       </ul>
-
-      <!-- PASTA -->
-
-      <div class="folder">
-
-        <button class="folder-btn" onclick="toggleFolder(this)">
-
-          <div class="folder-left">
-
-            <div class="folder-icon">📁</div>
-
-            <div class="folder-info">
-
-              <span class="folder-title">
-                Arquivos Confusos
-              </span>
-
-              <span class="folder-sub">
-                3 projetos
-              </span>
-
-            </div>
-
-          </div>
-
-          <span class="folder-arrow">⌄</span>
-
-        </button>
-
-        <div class="folder-content">
-
-          <ul>
-
-            <li>
-              <a class="project-link" href="Arquivo confuso da computação">
-                <div class="project-left">
-                  <div class="project-icon">💾</div>
-                  <span>Arquivo Confuso</span>
-                </div>
-                <span class="arrow">→</span>
-              </a>
-            </li>
-
-            <li>
-              <a class="project-link" href="atividade Front-end Arquivo Confuso da Computação">
-                <div class="project-left">
-                  <div class="project-icon">📂</div>
-                  <span>Arquivo Confuso da Computação</span>
-                </div>
-                <span class="arrow">→</span>
-              </a>
-            </li>
-
-            <li>
-              <a class="project-link" href="atividade Front-end Arquivo Confuso da computação (daysiUI)">
-                <div class="project-left">
-                  <div class="project-icon">✨</div>
-                  <span>Arquivo (DaysiUI)</span>
-                </div>
-                <span class="arrow">→</span>
-              </a>
-            </li>
-
-          </ul>
-
-        </div>
-
-      </div>
-
     </section>
 
     <!-- 2 BIMESTRE -->
-
     <section class="semester">
+      <div class="semester-title">2º Bimestre</div>
 
-      <div class="semester-title">
+      <ul>
+        <!-- Refações -->
+        <li><a class="project-link" href="Refacção da Prova DIA 1"><div class="project-left"><div class="project-icon">📝</div>Refação Prova Dia 1</div>→</a></li>
 
-        2º Bimestre
+        <li><a class="project-link" href="Refacção da Prova DIA 2"><div class="project-left"><div class="project-icon">✏️</div>Refação Prova Dia 2</div>→</a></li>
 
-        <span class="semester-line"></span>
+        <li><a class="project-link" href="Refacção da Prova DIA 3"><div class="project-left"><div class="project-icon">🖊️</div>Refação Prova Dia 3</div>→</a></li>
 
-      </div>
+        <!-- Semana 09 (EXPANDIDO) -->
+        <li><a class="project-link" href="SEMANA 09 exc1-CPF"><div class="project-left"><div class="project-icon">🛡️</div>exc1-CPF</div>→</a></li>
 
-      <!-- REFAÇÕES -->
+        <li><a class="project-link" href="SEMANA 09 exc2-Conversor"><div class="project-left"><div class="project-icon">🌡️</div>exc2-Conversor</div>→</a></li>
 
-      <div class="folder">
+        <li><a class="project-link" href="SEMANA 09 exc3-MediaEscolar"><div class="project-left"><div class="project-icon">🎓</div>exc3-MediaEscolar</div>→</a></li>
 
-        <button class="folder-btn" onclick="toggleFolder(this)">
+        <li><a class="project-link" href="SEMANA 09 exc4-Juros"><div class="project-left"><div class="project-icon">💳</div>exc4-Juros</div>→</a></li>
 
-          <div class="folder-left">
+        <li><a class="project-link" href="SEMANA 09 exc5-Convidados VIP"><div class="project-left"><div class="project-icon">👥</div>exc5-Convidados VIP</div>→</a></li>
 
-            <div class="folder-icon">📁</div>
+        <li><a class="project-link" href="SEMANA 09 exc6-Eventos"><div class="project-left"><div class="project-icon">🎉</div>exc6-Eventos</div>→</a></li>
 
-            <div class="folder-info">
+        <li><a class="project-link" href="SEMANA 09 exc7-ValidadorCartao"><div class="project-left"><div class="project-icon">🔐</div>exc7-ValidadorCartao</div>→</a></li>
 
-              <span class="folder-title">
-                Refações de Prova
-              </span>
-
-              <span class="folder-sub">
-                3 projetos
-              </span>
-
-            </div>
-
-          </div>
-
-          <span class="folder-arrow">⌄</span>
-
-        </button>
-
-        <div class="folder-content">
-
-          <ul>
-
-            <li>
-              <a class="project-link" href="Refacção da Prova DIA 1">
-                <div class="project-left">
-                  <div class="project-icon">📝</div>
-                  <span>Refação Prova Dia 1</span>
-                </div>
-                <span class="arrow">→</span>
-              </a>
-            </li>
-
-            <li>
-              <a class="project-link" href="Refacção da Prova DIA 2">
-                <div class="project-left">
-                  <div class="project-icon">✏️</div>
-                  <span>Refação Prova Dia 2</span>
-                </div>
-                <span class="arrow">→</span>
-              </a>
-            </li>
-
-            <li>
-              <a class="project-link" href="Refacção da Prova DIA 3">
-                <div class="project-left">
-                  <div class="project-icon">🖊️</div>
-                  <span>Refação Prova Dia 3</span>
-                </div>
-                <span class="arrow">→</span>
-              </a>
-            </li>
-
-          </ul>
-
-        </div>
-
-      </div>
-
-      <!-- SEMANA 09 -->
-
-      <div class="folder">
-
-        <button class="folder-btn" onclick="toggleFolder(this)">
-
-          <div class="folder-left">
-
-            <div class="folder-icon">📁</div>
-
-            <div class="folder-info">
-
-              <span class="folder-title">
-                Semana 09
-              </span>
-
-              <span class="folder-sub">
-                7 exercícios
-              </span>
-
-            </div>
-
-          </div>
-
-          <span class="folder-arrow">⌄</span>
-
-        </button>
-
-        <div class="folder-content">
-
-          <ul>
-
-            <li>
-              <a class="project-link" href="SEMANA 09 exc1-CPF">
-                <div class="project-left">
-                  <div class="project-icon">🛡️</div>
-                  <span>exc1-CPF</span>
-                </div>
-                <span class="arrow">→</span>
-              </a>
-            </li>
-
-            <li>
-              <a class="project-link" href="SEMANA 09 exc2-Conversor">
-                <div class="project-left">
-                  <div class="project-icon">🌡️</div>
-                  <span>exc2-Conversor</span>
-                </div>
-                <span class="arrow">→</span>
-              </a>
-            </li>
-
-            <li>
-              <a class="project-link" href="SEMANA 09 exc3-MediaEscolar">
-                <div class="project-left">
-                  <div class="project-icon">🎓</div>
-                  <span>exc3-MediaEscolar</span>
-                </div>
-                <span class="arrow">→</span>
-              </a>
-            </li>
-
-            <li>
-              <a class="project-link" href="SEMANA 09 exc4-Juros">
-                <div class="project-left">
-                  <div class="project-icon">💳</div>
-                  <span>exc4-Juros</span>
-                </div>
-                <span class="arrow">→</span>
-              </a>
-            </li>
-
-            <li>
-              <a class="project-link" href="SEMANA 09 exc5-Convidados VIP">
-                <div class="project-left">
-                  <div class="project-icon">👥</div>
-                  <span>exc5-Convidados VIP</span>
-                </div>
-                <span class="arrow">→</span>
-              </a>
-            </li>
-
-            <li>
-              <a class="project-link" href="SEMANA 09 exc6-Eventos">
-                <div class="project-left">
-                  <div class="project-icon">🎉</div>
-                  <span>exc6-Eventos</span>
-                </div>
-                <span class="arrow">→</span>
-              </a>
-            </li>
-
-            <li>
-              <a class="project-link" href="SEMANA 09 exc7-ValidadorCartao">
-                <div class="project-left">
-                  <div class="project-icon">🔐</div>
-                  <span>exc7-ValidadorCartao</span>
-                </div>
-                <span class="arrow">→</span>
-              </a>
-            </li>
-
-          </ul>
-
-        </div>
-
-      </div>
-
+      </ul>
     </section>
 
   </div>
 
   <div class="footer">
-
-    <div class="status">
-
-      <span class="dot"></span>
-
-      <span>
-        15 projetos ativos
-      </span>
-
-    </div>
-
-    <button class="theme-btn" onclick="toggleTheme()">
-
-      <span id="themeIcon">
-        ☀️
-      </span>
-
-    </button>
-
+    <div>15 projetos ativos</div>
+    <button class="theme-btn" onclick="document.body.classList.toggle('light')">☀️</button>
   </div>
 
 </div>
-
-<script>
-
-let open=false;
-
-function toggleProjects(){
-
-  open=!open;
-
-  const content=
-  document.getElementById('content');
-
-  const btn=
-  document.getElementById('toggleBtn');
-
-  const label=
-  document.getElementById('toggleLabel');
-
-  content.classList.toggle('open',open);
-
-  btn.classList.toggle('open',open);
-
-  label.textContent=
-  open
-  ? 'Ocultar projetos'
-  : 'Ver projetos';
-}
-
-function toggleFolder(button){
-
-  const folder=
-  button.parentElement;
-
-  folder.classList.toggle('open');
-}
-
-let light=false;
-
-function toggleTheme(){
-
-  light=!light;
-
-  document.body.classList.toggle('light',light);
-
-  document.getElementById('themeIcon')
-  .textContent=
-  light ? '🌙' : '☀️';
-}
-
-</script>
 
 </body>
 </html>
