@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Validador de Cartão</title>
+
+<style>
+    body{
+        font-family: Arial;
+        background:#ecf0f1;
+        display:flex;
+        justify-content:center;
+        align-items:center;
+        height:100vh;
+    }
+
+    .card{
+        background:white;
+        width:420px;
+        padding:30px;
+        border-radius:10px;
+        box-shadow:0 0 10px rgba(0,0,0,0.1);
+    }
+
+    h1{
+        text-align:center;
+    }
+
+    input{
+        width:100%;
+        padding:12px;
+        margin-top:15px;
+    }
+
+    button{
+        width:100%;
+        padding:12px;
+        margin-top:15px;
+        border:none;
+        background:#2c3e50;
+        color:white;
+        cursor:pointer;
+        border-radius:5px;
+    }
+
+    .resultado{
+        margin-top:20px;
+        background:#f7f7f7;
+        padding:15px;
+        border-radius:5px;
+    }
+
+    .valido{
+        color:green;
+        font-weight:bold;
+    }
+
+    .invalido{
+        color:red;
+        font-weight:bold;
+    }
+</style>
+</head>
+<body>
+
+<div class="card">
+    <h1>Card Guard</h1>
+
+    <input type="text" id="cartao" placeholder="Digite o número do cartão">
+
+    <button onclick="analisar()">Analisar Cartão</button>
+
+    <div class="resultado" id="resultado"></div>
+</div>
+
+<script>
+
+function validarLuhn(numero){
+
+    let soma = 0;
+    let dobrar = false;
+
+    for(let i = numero.length - 1; i >= 0; i--){
+
+        let digito = Number(numero[i]);
+
+        if(dobrar){
+            digito *= 2;
+
+            if(digito > 9){
+                digito -= 9;
+            }
+        }
+
+        soma += digito;
+        dobrar = !dobrar;
+    }
+
+    return soma % 10 === 0;
+}
+
+function descobrirBandeira(numero){
+
+    if(numero.startsWith("4")){
+        return "Visa";
+    }
+
+    if(numero.startsWith("5")){
+        return "MasterCard";
+    }
+
+    if(numero.startsWith("34") || numero.startsWith("37")){
+        return "American Express";
+    }
+
+    return "Desconhecida";
+}
+
+function descobrirSetor(numero){
+
+    const primeiro = numero[0];
+
+    switch(primeiro){
+        case "1":
+        case "2":
+            return "Companhias Aéreas";
+
+        case "3":
+            return "Viagens e Entretenimento";
+
+        case "4":
+        case "5":
+            return "Bancário e Financeiro";
+
+        case "6":
+            return "Comércio";
+
+        default:
+            return "Não identificado";
+    }
+}
+
+function analisar(){
+
+    let numero = document.getElementById("cartao").value;
+
+    numero = numero.replace(/\s/g, "");
+
+    const resultado = document.getElementById("resultado");
+
+    if(numero.length < 13 || numero.length > 16){
+
+        resultado.innerHTML = `
+            <p class="invalido">Número inválido!</p>
+        `;
+
+        return;
+    }
+
+    const valido = validarLuhn(numero);
+
+    const bandeira = descobrirBandeira(numero);
+
+    const setor = descobrirSetor(numero);
+
+    resultado.innerHTML = `
+        <p>Status:
+            <span class="${valido ? 'valido' : 'invalido'}">
+                ${valido ? 'Válido' : 'Inválido'}
+            </span>
+        </p>
+
+        <p><strong>Bandeira:</strong> ${bandeira}</p>
+
+        <p><strong>Categoria:</strong> ${setor}</p>
+
+        <p><strong>Banco Emissor:</strong> Não identificado</p>
+    `;
+}
+
+</script>
+
+</body>
+</html>
