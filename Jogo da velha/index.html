@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Jogo da Velha</title>
+
+<style>
+* {
+  box-sizing: border-box;
+}
+
+body {
+  font-family: sans-serif;
+  margin: 20px;
+  padding: 0;
+}
+
+h1 {
+  text-align: center;
+}
+
+.square {
+  background: #fff;
+  border: 1px solid #999;
+  float: left;
+  font-size: 24px;
+  font-weight: bold;
+  line-height: 60px;
+  height: 60px;
+  margin-right: -1px;
+  margin-top: -1px;
+  padding: 0;
+  text-align: center;
+  width: 60px;
+  cursor: pointer;
+}
+
+.board-row:after {
+  clear: both;
+  content: "";
+  display: table;
+}
+
+.status {
+  margin-bottom: 15px;
+  font-size: 20px;
+  font-weight: bold;
+}
+
+.game {
+  display: flex;
+  justify-content: center;
+  margin-top: 20px;
+}
+</style>
+</head>
+
+<body>
+<h1>Jogo da Velha</h1>
+
+<div class="game">
+  <div>
+    <div class="status" id="status">Próximo jogador: X</div>
+
+    <div class="board-row">
+      <button class="square" onclick="handleClick(0)"></button>
+      <button class="square" onclick="handleClick(1)"></button>
+      <button class="square" onclick="handleClick(2)"></button>
+    </div>
+
+    <div class="board-row">
+      <button class="square" onclick="handleClick(3)"></button>
+      <button class="square" onclick="handleClick(4)"></button>
+      <button class="square" onclick="handleClick(5)"></button>
+    </div>
+
+    <div class="board-row">
+      <button class="square" onclick="handleClick(6)"></button>
+      <button class="square" onclick="handleClick(7)"></button>
+      <button class="square" onclick="handleClick(8)"></button>
+    </div>
+  </div>
+</div>
+
+<script>
+let xIsNext = true;
+let squares = Array(9).fill(null);
+
+const buttons = document.querySelectorAll(".square");
+const status = document.getElementById("status");
+
+function calculateWinner(board) {
+  const lines = [
+    [0, 1, 2],
+    [3, 4, 5],
+    [6, 7, 8],
+    [0, 3, 6],
+    [1, 4, 7],
+    [2, 5, 8],
+    [0, 4, 8],
+    [2, 4, 6]
+  ];
+
+  for (let i = 0; i < lines.length; i++) {
+    const [a, b, c] = lines[i];
+
+    if (
+      board[a] &&
+      board[a] === board[b] &&
+      board[a] === board[c]
+    ) {
+      return board[a];
+    }
+  }
+
+  return null;
+}
+
+function handleClick(i) {
+  if (squares[i] || calculateWinner(squares)) {
+    return;
+  }
+
+  squares[i] = xIsNext ? "X" : "O";
+  buttons[i].textContent = squares[i];
+
+  const winner = calculateWinner(squares);
+
+  if (winner) {
+    status.textContent = "Vencedor: " + winner;
+    return;
+  }
+
+  if (!squares.includes(null)) {
+    status.textContent = "Empate!";
+    return;
+  }
+
+  xIsNext = !xIsNext;
+  status.textContent =
+    "Próximo jogador: " + (xIsNext ? "X" : "O");
+}
+</script>
+
+</body>
+</html>
